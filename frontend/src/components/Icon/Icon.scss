@@ -1,0 +1,31 @@
+/*перенести константы в отдельное место*/
+$PARH_RESOURCE: '/static/';
+$srcIcomoon: $PARH_RESOURCE +'fonts/icomoon/icomoon.ttf';
+$srcFaFree: $PARH_RESOURCE +'fonts/webfonts/fa-solid-900.ttf';
+@font-face {
+    font-family: icomoon;
+    src: url($srcIcomoon); 
+}
+
+@font-face {
+    font-family: 'Font Awesome 5 Free'; 
+    src: url($srcFaFree);
+}
+
+
+.icon {
+	&_font {
+		&_icomoon {
+			font-family: icomoon;
+		}
+		&_faFree {
+			font-family: 'Font Awesome 5 Free';
+		}		
+	}
+	&_parent {
+		&_training-program {
+			font-size: 40px;
+    		line-height: 1.5;
+		}
+	}
+}

@@ -1,0 +1,13 @@
+.training-programs {
+	display: -webkit-flex; /* Safari */
+ 	display: flex;
+    -webkit-flex-direction: row;
+ 	flex-direction: row;
+ 	flex-wrap: wrap;
+ 	justify-content: center;
+ 	padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+ 	margin-top: 55px; 	
+ 	max-width: 570px;	
+}
