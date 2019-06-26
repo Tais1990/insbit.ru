@@ -1,4 +1,10 @@
 @import "../../assets/scss/_variables.scss";
+header {
+    position: fixed;
+    z-index: 1030;
+    width: 100%;
+    background-color: white;
+}
 .header {
 	display: -webkit-flex;
  	display: flex;
@@ -52,4 +58,7 @@
             display: none;
         }
 	}
+}
+.header-expansion {
+    height: 80px;
 }
