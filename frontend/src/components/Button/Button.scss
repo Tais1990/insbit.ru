@@ -1,0 +1,32 @@
+/*перенести константы в отдельное место*/
+$mail-color: #4165b3;
+
+.button {
+	display: block!important;
+    color: #3a5aa0;
+    background-color: #fff;
+    font-weight: 600;
+    padding: 6px 12px; 
+    text-decoration: none; 
+    &_type {
+    	&_button {
+			border: 1px solid #4165b3;
+			border-radius: 5px;
+			font-size: 15px;
+		}
+		&_link{
+			font-size: 19px;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+    }
+    &_color {
+    	&_light {
+    		&:hover {
+				color: #fff;
+				background-color: #4165b3;
+			}
+    	}
+    }
+}

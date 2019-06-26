@@ -1,4 +1,5 @@
 //https://www.youtube.com/results?search_query=webpack+4++Jack+Coder
+//https://habr.com/ru/post/444446/
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -80,7 +81,6 @@ module.exports = {
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: `${PATHS.assets}css/[name].[hash].css`
-			//filename: "[name].css",
 		}),
 		new HtmlWebpackPlugin({
 			template: `${PATHS.src}/index.html`,

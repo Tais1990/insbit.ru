@@ -1,5 +1,4 @@
-/*перенести константы в отдельное место*/
-$PARH_RESOURCE: '/static/';
+@import "../../assets/scss/_variables.scss";
 $srcIcomoon: $PARH_RESOURCE +'fonts/icomoon/icomoon.ttf';
 $srcFaFree: $PARH_RESOURCE +'fonts/webfonts/fa-solid-900.ttf';
 @font-face {
