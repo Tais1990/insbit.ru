@@ -1,0 +1,30 @@
+@import "../../assets/scss/_variables.scss";
+.social-icons {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	justify-content: flex-end;
+	padding-right: 100px;
+	@include mobile {
+		justify-content: center;
+		padding-right: 0px;
+	}	
+	&__icon {
+		display: -webkit-flex;
+		display: flex;
+		height: 40px;
+		width: 40px;
+		color: #333;
+		text-align: center;
+		text-decoration: none;
+		font-size: 19px;
+		border-radius: 50%;
+		background-color: #999;
+		margin-right: 5px;
+		margin-left: 5px;
+		&:hover {
+			background-color: white;
+		}
+	}
+}

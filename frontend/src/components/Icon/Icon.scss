@@ -1,6 +1,7 @@
 @import "../../assets/scss/_variables.scss";
 $srcIcomoon: $PARH_RESOURCE +'fonts/icomoon/icomoon.ttf';
 $srcFaFree: $PARH_RESOURCE +'fonts/webfonts/fa-solid-900.ttf';
+$srcFaBrands: $PARH_RESOURCE +'fonts/webfonts/fa-brands-400.ttf';
 @font-face {
     font-family: icomoon;
     src: url($srcIcomoon); 
@@ -9,6 +10,10 @@ $srcFaFree: $PARH_RESOURCE +'fonts/webfonts/fa-solid-900.ttf';
 @font-face {
     font-family: 'Font Awesome 5 Free'; 
     src: url($srcFaFree);
+}
+@font-face {
+    font-family: 'Font Awesome 5 Brands'; 
+    src: url($srcFaBrands);
 }
 
 
@@ -19,12 +24,18 @@ $srcFaFree: $PARH_RESOURCE +'fonts/webfonts/fa-solid-900.ttf';
 		}
 		&_faFree {
 			font-family: 'Font Awesome 5 Free';
+		}
+		&_faBrands {
+			font-family: 'Font Awesome 5 Brands';
 		}		
 	}
 	&_parent {
 		&_training-program {
 			font-size: 40px;
     		line-height: 1.5;
+		}
+		&_social-icons {
+			margin: auto;
 		}
 	}
 }

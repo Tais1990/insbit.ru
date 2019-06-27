@@ -9,6 +9,9 @@ import SectionBlock from './components/SectionBlock/SectionBlock.jsx';
 import TeachingMethodsBlock from './components/TeachingMethodsBlock/TeachingMethodsBlock.jsx';
 import TrainingPrograms from './components/TrainingPrograms/TrainingPrograms.jsx';
 import Header from './components/Header/Header.jsx';
+import SocialIcons from './components/SocialIcons/SocialIcons.jsx';
+
+
 ReactDOM.render(
 	<div>       
         <Header/>
@@ -21,6 +24,7 @@ ReactDOM.render(
         </SectionBlock>
 		<TitleBlock text = {'текст для заголловка'}/>
        	<TextBlock><div>Текст статический для просто</div></TextBlock>
+        <SocialIcons/>
 
 	</div>,
 	document.getElementById("root")
