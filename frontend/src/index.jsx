@@ -9,8 +9,7 @@ import SectionBlock from './components/SectionBlock/SectionBlock.jsx';
 import TeachingMethodsBlock from './components/TeachingMethodsBlock/TeachingMethodsBlock.jsx';
 import TrainingPrograms from './components/TrainingPrograms/TrainingPrograms.jsx';
 import Header from './components/Header/Header.jsx';
-import SocialIcons from './components/SocialIcons/SocialIcons.jsx';
-
+import Footer from './components/Footer/Footer.jsx';
 
 ReactDOM.render(
 	<div>       
@@ -22,10 +21,11 @@ ReactDOM.render(
         <SectionBlock title = 'Направления подготовки'>
         	<TrainingPrograms/>
         </SectionBlock>
-		<TitleBlock text = {'текст для заголловка'}/>
+		{/*
+        <TitleBlock text = {'текст для заголловка'}/>
        	<TextBlock><div>Текст статический для просто</div></TextBlock>
-        <SocialIcons/>
-
+        */}
+        <Footer/>
 	</div>,
 	document.getElementById("root")
 );
