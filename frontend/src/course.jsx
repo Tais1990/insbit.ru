@@ -14,7 +14,9 @@ import Footer from './components/Footer/Footer.jsx';
 ReactDOM.render(
 	<div>       
         <Header/>
-		<div>ВТОРЯ СТРАНИЦА</div>
+		<div>Здравствуйте! К сожалению сайт находится ещё в разработке, позже на этой старнице будет информация о</div>
+		<div> Напрвление: {document.getElementById("nameTrainingPrograms").value}</div>
+		<div> Название курса:  {document.getElementById("nameCourse").value}</div>
         <Footer/>
 	</div>,
 	document.getElementById("root")

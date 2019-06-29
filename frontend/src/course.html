@@ -14,8 +14,13 @@
     <title>Test webpack</title>
 </head>
 <body>
-    <div id= 'root'> Типо вторя страница с курсом
-    </div>
+    <!--
+    <input type="hidden" id="nameCourse" value="{{ nameCourse }}">
+    <input type="hidden" id="nameTrainingPrograms" value="{{ nameTrainingPrograms }}">
+    -->
+    <input type="hidden" id="nameCourse" value="Название курса">
+    <input type="hidden" id="nameTrainingPrograms" value="Название программы">
+    <div id= 'root'>  </div> <!--Запихать сюда данные о том, что ещё идёт загрузка-->
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
 		<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
 	<% } %>
