@@ -16,7 +16,8 @@ module.exports = {
 		paths: PATHS
 	},
 	entry: {
-		app: `${PATHS.src}/index.jsx`
+		app: `${PATHS.src}/index.jsx`,
+		course: `${PATHS.src}/course.jsx`
 	},
 	output: {		
 		filename: `${PATHS.assets}js/[name].[hash].js`,
@@ -85,7 +86,14 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: `${PATHS.src}/index.html`,
 			filename: 'index.html',
-			inject: false
+			inject: false,
+			chunks: ['app', 'vendors']
+		}),
+		new HtmlWebpackPlugin({
+			template: `${PATHS.src}/course.html`,
+			filename: 'course.html',
+			inject: false,
+			chunks: ['course', 'vendors']
 		}),
 		// копирование файлов
 		new CopyWebpackPlugin([
