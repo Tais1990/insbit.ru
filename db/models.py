@@ -1,7 +1,5 @@
 from peewee import *
-
-dbhandle = PostgresqlDatabase('insbit', user='postgres', password='123',
-                           host='127.0.0.1', port=5432)
+from dbhandle import *
  
 class BaseModel(Model):
     class Meta:
