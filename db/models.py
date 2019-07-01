@@ -1,5 +1,5 @@
 from peewee import *
-from dbhandle import *
+from db.dbhandle import *
  
 class BaseModel(Model):
     class Meta:

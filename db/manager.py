@@ -1,11 +1,17 @@
 import peewee
-from dbhandle import *
-from models import *
+from db.dbhandle import *
+from db.models import *
+
+def function():
+    print('test')
+
+def test():
+    return {"id": "1", "name": "321"}
 
 def find_all_categories():
     return Category.select()
- 
-if __name__ == '__main__':
+
+def test1():
     try:
         dbhandle.connect()
         #Category.create_table()
@@ -13,10 +19,10 @@ if __name__ == '__main__':
         product_data = []
         for product in products:
             product_data.append({
-		        'id': product.id,
-		        'name': product.name
-		    })
-		 
-        print(product_data)
+                'id': product.id,
+                'name': product.name
+            })
+        print(products)
+        return product_data
     except peewee.InternalError as px:
         print(str(px))

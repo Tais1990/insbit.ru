@@ -8,6 +8,7 @@ from aiohttp import web
 #from .worker import predict
 from utils import Config
 
+from db import manager
 
 class SiteHandler:
     def __init__(self, conf: Config, executor: ProcessPoolExecutor) -> None:
@@ -31,6 +32,10 @@ class SiteHandler:
         return {
             'nameTrainingPrograms': request.match_info['nameTrainingPrograms'],
             'nameCourse': request.match_info['nameCourse']}
+
+    async def getAll(self, request: web.Request) -> Dict[str, str]:
+        res = manager.test1()
+        return web.json_response(res)
         
 
 
