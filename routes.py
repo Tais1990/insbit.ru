@@ -21,6 +21,8 @@ def init_routes(app: web.Application, handler: SiteHandler) -> None:
     # вспомогательный не очень нужный кусок
     add_route('OPTIONS', '/api/getCourse', handler.getCourseOPTIONS, name = 'getCourseOPTIONS')
 
+    add_route('POST', '/api/editCourse', handler.editCourse, name='editCourse')
+
     add_route('POST', '/predict', handler.predict, name='predict')
 
     # added static dir

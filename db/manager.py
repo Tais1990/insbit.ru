@@ -103,3 +103,22 @@ def coursesAdd(code, name, description, numberCode, forWhom, duration, knowledge
         htmlContent = htmlContent
     )
     row.save()
+
+#изменение записи
+#возможно стоит держать разностные изменения
+def coursesEdit(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, htmlContent):
+    course = Courses.select().where(Courses.code == code.strip()).get()
+    course.name = name;
+    course.description = description;
+    course.numberCode = numberCode;
+    course.forWhom = forWhom;
+    course.duration = duration;
+    course.knowledgeRequired = knowledgeRequired;
+    course.result = result;
+    course.htmlContent = htmlContent;
+    course.save()
+
+def coursesEditSmall(code, name):
+    course = Courses.select().where(Courses.code == code.strip()).get()
+    course.name = name;   
+    course.save()

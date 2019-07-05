@@ -66,10 +66,7 @@ class SiteHandler:
             headers={
             'Access-Control-Allow-Origin': 'http://localhost:8081'
             })     
-        
-
-
-
+    
     async def predict(self, request: web.Request) -> web.Response:
         form = await request.post()
         raw_data = form['file'].file.read()
@@ -78,4 +75,25 @@ class SiteHandler:
         raw_data = await r(executor, predict, raw_data)
         # raw_data = predict(raw_data)
         headers = {'Content-Type': 'application/json'}
-        return web.Response(body=raw_data, headers=headers)
+        return web.Response(body=raw_data, headers=headers)   
+
+
+
+    async def editCourse(self, request: web.Request) -> web.Response:
+        form = await request.json()
+        
+        print(form.get('code'))
+        #manager.coursesEdit()
+       
+        #raw_data = form['file'].file.read()
+        #executor = request.app['executor']
+        #r = self._loop.run_in_executor
+        #raw_data = await r(executor, predict, raw_data)
+        #raw_data = '{"code"}'
+        manager.coursesEditSmall(form.get('code'), form.get('name'))
+        headers = {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:8081'
+            }
+        return web.Response(status=200, headers=headers)
+        #return web.Response(headers=headers)
