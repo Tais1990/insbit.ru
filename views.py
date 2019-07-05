@@ -34,8 +34,29 @@ class SiteHandler:
             'nameCourse': request.match_info['nameCourse']}
 
     async def getAll(self, request: web.Request) -> Dict[str, str]:
-        res = manager.test1()
+        #manager.coursesAdd('code1', 'название кураса', 'описание курса')
+        res = manager.coursesSelectAll()
         return web.json_response(res)
+    
+    # чёрный ход для фронтенда, чтобы в моменте верстки пропустить запросы от клиента
+    # по окнчанию разработки - закрыть
+    # в этот кусок мы даже не заходим. но в описании всё именно так, поэтом
+    # на всякий случай оставлю
+    async def getCourseOPTIONS(self, request: web.Request) -> Dict[str, str]:
+        headers = {
+            'Access-Control-Allow-Method': 'GET', 
+            'Access-Control-Request-Headers ': 'Content-Type' ,
+        }
+        print('getCourseOPTIONS')
+        return web.Response(status=200, headers=headers)      
+
+    async def getCourse(self, request: web.Request) -> Dict[str, str]:
+        code = request.rel_url.query["code"]
+        res = manager.coursesSelect(code) 
+        return web.json_response(res, 
+            headers={
+            'Access-Control-Allow-Origin': 'http://localhost:8081'
+            })     
         
 
 
