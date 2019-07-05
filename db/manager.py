@@ -25,7 +25,7 @@ def test1():
                 'id': product.id,
                 'name': product.name
             })
-        print(products)
+        #print(products)
         return product_data
     except peewee.InternalError as px:
         print(str(px))
@@ -52,7 +52,13 @@ def coursesSelectAll():
                 'id': record.id,
                 'code': record.code,
                 'name': record.name,
-                'description': record.description
+                'description': record.description,
+                'numberCode' : record.numberCode,
+                'forWhom' : record.forWhom,
+                'duration' : record.duration,
+                'knowledgeRequired' : record.knowledgeRequired,
+                'result' : record.result,
+                'htmlContent' : record.htmlContent
             })
         return courses_data
     except peewee.InternalError as px:
@@ -64,13 +70,19 @@ def coursesSelect(code):
     try:
         #dbhandle.connect()
         course = Courses.select().where(Courses.code == code.strip()).get()
-        print(course);
+        #print(course);
         courses_data = []
         courses_data.append({
                 'id': course.id,
                 'code': course.code,
                 'name': course.name,
-                'description': course.description
+                'description': course.description,
+                'numberCode' : course.numberCode,
+                'forWhom' : course.forWhom,
+                'duration' : course.duration,
+                'knowledgeRequired' : course.knowledgeRequired,
+                'result' : course.result,
+                'htmlContent' : course.htmlContent
             })
         return courses_data
     except peewee.InternalError as px:
@@ -78,10 +90,16 @@ def coursesSelect(code):
         return 0
 
 #добавление записи
-def coursesAdd(code, name, description):
+def coursesAdd(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, htmlContent):
     row = Courses(
-        name=name.lower().strip(),
-        code=code.lower().strip(),
-        description=description.lower().strip(),
+        name = name,
+        code = code.lower().strip(),
+        description = description,
+        numberCode = numberCode,
+        forWhom = forWhom,
+        duration = duration,
+        knowledgeRequired = knowledgeRequired,
+        result = result,
+        htmlContent = htmlContent
     )
     row.save()

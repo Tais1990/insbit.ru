@@ -1,0 +1,13 @@
+@import "_variables.scss";
+@import "_fonts.scss";
+.course-wrapper {
+	width: 970px;
+	margin: 0 auto;
+	/*потом тут будет настройка для флекса*/
+	@include tablet {
+		width: 740px;
+	}
+	@include mobile {
+        width: 90%;
+    }
+}

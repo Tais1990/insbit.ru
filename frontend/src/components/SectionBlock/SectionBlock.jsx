@@ -13,7 +13,7 @@ class SectionBlock extends React.Component {
 			classes += ` section-block_color_${color}`;
 		}		
         return <section className = {classes}> 
-        	<h1 className = 'section-block__title'>{title} </h1> 
+        	{title && <h1 className = 'section-block__title'>{title} </h1> }
         	{children}     	
         </section>
     }
