@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
-
+const modeConst = "development"
 const devWebpackConfig = merge(baseWebpackConfig, {
 	mode: 'development',	
 	devtool: 'cheap-module-eval-source-map',
@@ -17,7 +17,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 	plugins: [
 	    new webpack.SourceMapDevToolPlugin({
 	      filename: '[file].map'
-	    })
+	    }),
+	    new webpack.DefinePlugin({  
+			// константа, для передачи данных о режиме сборки, чтобы разделить разработку фронта и бека
+			MODE_NAME: `"${modeConst}"`
+      	})
 	  ]
 
 })
