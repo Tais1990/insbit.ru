@@ -1,14 +1,43 @@
-/*
-.about-course {
-	text-align: left;
-	&__title {
-		margin-bottom: 10px;
-		margin-top: 20px;
-    	font-size: 26px;
-    	line-height: 35px;
-	    font-weight: 300;
-	    font-family: Open Sans;
-	}
+@import "../../assets/scss/_variables.scss";
+@import "../../assets/scss/_fonts.scss";
+.course-edit {
+	font-family: Open Sans;
+	margin-top: 20px;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	&__field {
+		font-family: Open Sans;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-direction: row;
+		flex-direction: row;
+		line-height: 1.5;
+		margin: 5px;
+		@include mobile {
+			-webkit-flex-direction: column;
+			flex-direction: column;
+		}
+		label {
+			width: 200px;
+			margin: auto 0;
+			font-family: Open Sans;
+			font-weight: 700;
+    		
+			@include mobile {
+				width: 100%
+			}
+		}
+		textarea {
+			flex-grow: 1;
+			height: 200px;
+			font-family: Open Sans;
+		}
+		input {
+			flex-grow: 1;
+			font-family: Open Sans;
+		}
+	}	
 }
-*/
 

@@ -7,8 +7,7 @@ class Item extends React.Component {
         super();
     }
     render(props, state) {
-        let {title, data, type, beforeData} = this.props;    
-        console.log(data) 
+        let {title, data, type, beforeData} = this.props;     
         if (type == 'paragraph')
         {
             return <div className = 'item'>

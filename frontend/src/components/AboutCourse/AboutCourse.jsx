@@ -19,6 +19,7 @@ class AboutCourse extends React.Component {
             <Item title = 'Для кого:' data = {courseData.forWhom}/>
             <Item title = 'Необходимая подготовка:' data = {courseData.knowledgeRequired} type = 'list'/>
             <Item title = 'Результат обучения:' data = {courseData.result} type = 'list' beforeData = 'После прохождения курса Вы сможете:'/>
+            <div className = 'about-course__title'>Запишитесь на курс по почте info@insbit.ru или по телефону +79995655575</div>
             <Item title = 'Содержание курса:' data={courseData.htmlContent} type='html'/>
         </div>
     }

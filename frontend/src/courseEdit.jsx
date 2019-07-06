@@ -1,4 +1,5 @@
 import './assets/scss/main.scss'
+import './assets/scss/course.scss'
 import React from 'react'
 import ReactDOM from "react-dom";
 
@@ -9,8 +10,7 @@ var urlServer = MODE_NAME == "development" ? 'http://localhost:8080' : '';
 // TO-DO рапустить сюда крутилку и сообщдение об ошибках
 ReactDOM.render(
 	<div>       
-		Идёт загрузка
-		
+		Идёт загрузка		
 	</div>,
 	document.getElementById("root")
 );
@@ -27,9 +27,9 @@ fetch(`${urlServer}/api/getCourse?code=${document.getElementById("nameCourse").v
 		if (data != null && data[0] != null)
 		{
 			ReactDOM.render(
-				<div>
-					Страница с редактированием курса для админки
-						<CourseEdit courseData = {data[0]}/>
+				<div className = 'course-wrapper'>
+					Скоро тут будет нормальная админка
+					<CourseEdit courseData = {data[0]}/>
 				</div>,
 				document.getElementById("root")
 			);

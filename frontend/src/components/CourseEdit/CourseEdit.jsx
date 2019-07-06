@@ -18,9 +18,7 @@ class CourseEdit extends React.Component {
             knowledgeRequired : this.arrayToString(props.courseData.knowledgeRequired),
             result : this.arrayToString(this.props.courseData.result),
             htmlContent : props.courseData.htmlContent
-        };
-
-        console.log(props.courseData.knowledgeRequired)
+        };       
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,7 +29,6 @@ class CourseEdit extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('Сочинение отправлено: ' + this.state.name);
         event.preventDefault();
         fetch(`${urlServer}/api/editCourse`, {
             method: 'POST',
@@ -51,53 +48,51 @@ class CourseEdit extends React.Component {
             })
         })
         // подключить обработку ошибки из базы
-        .then(res => {console.log('res'); console.log(res)})
+        .then(res => console.log(res))
         //.then(data => console.log(data))
         .catch(err => console.log(err));
     }
     arrayToString(array){
         let result = '';
-        array.map((str) => result = result +  str + '\n')        
+        array.map((str) => result = result + str + '\n')        
         return result.substring(0, result.length - 1);
     }
     stringToArray(str) {
         return str.replace(/^\s*/,'').replace(/\s*$/,'').split('\n');
     }
 
-    render(props, state) {        
-        
-        return <form onSubmit={this.handleSubmit}>
-            <label> Название:
-                    <textarea name="name" value={this.state.name} onChange={this.handleChange} />
-            </label>
-            <label>
-                Код:
-                    <input name="numberCode" type="text" value={this.state.numberCode} onChange={this.handleChange} />
-            </label>
-            <label>
-                Продолжительность:
-                    <input name="duration" type="text" value={this.state.duration} onChange={this.handleChange} />
-            </label>
-            <label>
-                Код для url:
-                    <input name="code" type="text" value={this.state.code} onChange={this.handleChange} />
-            </label>
-            <label> Описание курса:
-                    <textarea name="description" value={this.state.description} onChange={this.handleChange} />
-            </label>
-            <label> Для кого:
-                    <textarea name="forWhom" value={this.state.forWhom} onChange={this.handleChange} />
-            </label>
-            <label> Необходимая подготовка:
-                    <textarea name="knowledgeRequired" value={this.state.knowledgeRequired} onChange={this.handleChange} />
-            </label>
-            <label> Результат обучения:
-                    <textarea name="result" value={this.state.result} onChange={this.handleChange} />
-            </label>
-            <label> Содержание курса:
-                    <textarea name="htmlContent" value={this.state.htmlContent} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Отправить" />
+    render(props, state) { 
+        return <form className = 'course-edit' onSubmit={this.handleSubmit}>
+            <div className = 'course-edit__field'>
+                <label> Название:</label> <input name="name" type="text" value={this.state.name} onChange={this.handleChange} />
+            </div>
+            <div className = 'course-edit__field'>
+                <label>Код:</label><input name="numberCode" type="text" value={this.state.numberCode} onChange={this.handleChange} />
+            </div>
+            <div className = 'course-edit__field'>
+                <label>Продолжительность:</label> <input name="duration" type="text" value={this.state.duration} onChange={this.handleChange} />
+            </div>
+            <div className = 'course-edit__field'>
+                <label> Код для url: </label><input name="code" type="text" value={this.state.code} onChange={this.handleChange} />
+            </div>
+            <div className = 'course-edit__field'>
+                <label> Описание курса:</label> <textarea name="description" value={this.state.description} onChange={this.handleChange} />
+            </div>
+            <div className = 'course-edit__field'>
+                <label> Для кого:</label> <textarea name="forWhom" value={this.state.forWhom} onChange={this.handleChange} />
+            </div>
+            <div className = 'course-edit__field'>
+                <label> Необходимая подготовка:</label> <textarea name="knowledgeRequired" value={this.state.knowledgeRequired} onChange={this.handleChange} />
+            </div>
+            <div className = 'course-edit__field'>
+                <label> Результат обучения:</label> <textarea name="result" value={this.state.result} onChange={this.handleChange} />
+            </div>
+            <div className = 'course-edit__field'>
+                <label> Содержание курса:</label> <textarea name="htmlContent" value={this.state.htmlContent} onChange={this.handleChange} />
+            </div>
+            <div className = 'course-edit__field'>
+                <input type="submit" value="Отправить" />
+            </div>
           </form>
     }
 }
