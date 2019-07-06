@@ -13,7 +13,14 @@ class CourseEdit extends React.Component {
             numberCode: props.courseData.numberCode, 
             duration: props.courseData.duration,
             code: props.courseData.code,
+            description : props.courseData.description,
+            forWhom : props.courseData.forWhom,
+            knowledgeRequired : this.arrayToString(props.courseData.knowledgeRequired),
+            result : this.arrayToString(this.props.courseData.result),
+            htmlContent : props.courseData.htmlContent
         };
+
+        console.log(props.courseData.knowledgeRequired)
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,12 +40,28 @@ class CourseEdit extends React.Component {
             },
             body: JSON.stringify( {
                 code : this.state.code,
-                name : this.state.name
+                name : this.state.name,
+                numberCode : this.state.numberCode,
+                duration : this.state.duration,
+                description : this.state.description,
+                forWhom : this.state.forWhom,
+                knowledgeRequired : this.stringToArray(this.state.knowledgeRequired),
+                result : this.stringToArray(this.state.result),
+                htmlContent : this.state.htmlContent
             })
         })
+        // подключить обработку ошибки из базы
         .then(res => {console.log('res'); console.log(res)})
         //.then(data => console.log(data))
         .catch(err => console.log(err));
+    }
+    arrayToString(array){
+        let result = '';
+        array.map((str) => result = result +  str + '\n')        
+        return result.substring(0, result.length - 1);
+    }
+    stringToArray(str) {
+        return str.replace(/^\s*/,'').replace(/\s*$/,'').split('\n');
     }
 
     render(props, state) {        
@@ -58,6 +81,21 @@ class CourseEdit extends React.Component {
             <label>
                 Код для url:
                     <input name="code" type="text" value={this.state.code} onChange={this.handleChange} />
+            </label>
+            <label> Описание курса:
+                    <textarea name="description" value={this.state.description} onChange={this.handleChange} />
+            </label>
+            <label> Для кого:
+                    <textarea name="forWhom" value={this.state.forWhom} onChange={this.handleChange} />
+            </label>
+            <label> Необходимая подготовка:
+                    <textarea name="knowledgeRequired" value={this.state.knowledgeRequired} onChange={this.handleChange} />
+            </label>
+            <label> Результат обучения:
+                    <textarea name="result" value={this.state.result} onChange={this.handleChange} />
+            </label>
+            <label> Содержание курса:
+                    <textarea name="htmlContent" value={this.state.htmlContent} onChange={this.handleChange} />
             </label>
             <input type="submit" value="Отправить" />
           </form>

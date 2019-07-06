@@ -23,6 +23,9 @@ def init_routes(app: web.Application, handler: SiteHandler) -> None:
 
     add_route('POST', '/api/editCourse', handler.editCourse, name='editCourse')
 
+    # админка. как появятся сесии - ПЕРЕПИСАТЬ!!!!
+    add_route('GET', '/admin/Yx5wvGduYsGrYwTKojFR/{nameTrainingPrograms}/course/{nameCourse}', handler.adminEditCourse, name='adminEditCourse')
+
     add_route('POST', '/predict', handler.predict, name='predict')
 
     # added static dir

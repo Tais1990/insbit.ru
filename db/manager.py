@@ -89,7 +89,14 @@ def coursesEdit(code, name, description, numberCode, forWhom, duration, knowledg
     course.htmlContent = htmlContent;
     course.save()
 
-def coursesEditSmall(code, name):
+def coursesEditSmall(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result):
     course = Courses.select().where(Courses.code == code.strip()).get()
-    course.name = name;   
+    course.name = name;
+    course.description = description;
+    course.numberCode = numberCode;
+    course.forWhom = forWhom;
+    course.duration = duration;  
+    course.knowledgeRequired = knowledgeRequired; 
+    course.result = result;
+    
     course.save()

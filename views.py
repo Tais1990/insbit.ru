@@ -64,15 +64,22 @@ class SiteHandler:
         raw_data = await r(executor, predict, raw_data)
         # raw_data = predict(raw_data)
         headers = {'Content-Type': 'application/json'}
-        return web.Response(body=raw_data, headers=headers)   
-
-
+        return web.Response(body=raw_data, headers=headers)
 
     async def editCourse(self, request: web.Request) -> web.Response:
         form = await request.json()
-        manager.coursesEditSmall(form.get('code'), form.get('name'))
+        manager.coursesEdit(form.get('code'), form.get('name'), 
+            form.get('description'), form.get('numberCode'), 
+            form.get('forWhom'), form.get('duration'),
+            form.get('knowledgeRequired'), form.get('result'), form.get('htmlContent'))
         headers = {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'http://localhost:8081'
             }
         return web.Response(status=200, headers=headers)
+
+    @aiohttp_jinja2.template('courseEdit.html')
+    async def adminEditCourse(self, request: web.Request) -> Dict[str, str]:
+        return {
+            'nameTrainingPrograms': request.match_info['nameTrainingPrograms'],
+            'nameCourse': request.match_info['nameCourse']}
