@@ -8,6 +8,9 @@
 		width: 740px;
 	}
 	@include mobile {
-        width: 90%;
-    }
+		width: 90%;
+	}
+	&_broad {
+		margin: 0 10px;
+	}
 }

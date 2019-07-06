@@ -1,8 +1,8 @@
 from db import manager
 from typing import Any
 def main(args: Any = None) -> None:
-    manager.coursesCreateTable()
-    manager.coursesAdd('code1', 
+    #manager.coursesCreateTable()
+    manager.coursesAdd('code2', 
         'Курс "Администрирование и устранение неполадок в Office 365"', 
         'Этот трехдневный курс обучения под руководством инструктора, предназначенный для специалистов по информационным технологиям (ИТ),'+
         ' которые участвуют в администрировании, настройке, устранении неполадок и эксплуатации служб Office 365, включая их идентификационные данные, зависимости, требования и поддержку. технологии.'+

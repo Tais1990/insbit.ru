@@ -15,6 +15,7 @@ def init_routes(app: web.Application, handler: SiteHandler) -> None:
     add_route('GET', '/about/{name}', handler.aboutName, name='aboutName')
 
     add_route('GET', '/{nameTrainingPrograms}/course/{nameCourse}', handler.aboutCourse, name='aboutCourse')
+    add_route('GET', '/courseAll', handler.courseAll, name='courseAll')
 
     add_route('GET', '/api/getAll', handler.getAll, name = 'getAll')
     add_route('GET', '/api/getCourse', handler.getCourse, name = 'getCourse')

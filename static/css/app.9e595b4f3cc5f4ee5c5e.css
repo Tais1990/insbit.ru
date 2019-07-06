@@ -1,4 +1,4 @@
-@font-face{font-family:Open Sans;src:url(/static/fonts/openSans/open-sans.ttf)}body{margin:0;font-family:Open Sans,Arial,serif}
+@font-face{font-family:Open Sans;src:url(/static/fonts/openSans/open-sans.ttf)}body{margin:0;font-family:Open Sans,Arial,serif}.button_center{margin:0 auto}
 .text-block{margin:0 auto;font-size:16px;line-height:26px;max-width:670px}
 .section-block{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center;padding-bottom:50px}.section-block_color_grey{background-color:#f2f2f2}.section-block__title{padding-bottom:20px;color:#141414;font-size:30px;font-weight:300;line-height:40px;text-align:center;font-family:Open Sans}
 .teaching-methods-block{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding-left:15px;padding-right:15px;margin:55px auto 0}

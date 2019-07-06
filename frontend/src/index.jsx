@@ -10,17 +10,21 @@ import TeachingMethodsBlock from './components/TeachingMethodsBlock/TeachingMeth
 import TrainingPrograms from './components/TrainingPrograms/TrainingPrograms.jsx';
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
+import Button from './components/Button/Button.jsx';
 
 ReactDOM.render(
 	<div>       
-        <Header/>
+        <Header/>        
 		<SectionBlock title = 'Обучение для IT-специалистов' color='grey'>
         	<TextBlock>Уральская Школа IT приглашает на обучение IT специалистов и пользователей. Мы предлагаем обучение по-различным продуктам и системам для новичков и профессионалов.</TextBlock>
         	<TeachingMethodsBlock/>
         </SectionBlock>
         <SectionBlock title = 'Направления подготовки'>
         	<TrainingPrograms/>
-        </SectionBlock>
+            <div className = 'button_center'>
+                <Button title = 'КУРСЫ' type = 'button' color='light' link = '/courseAll'/> 
+            </div>  
+        </SectionBlock>  
 		{/*
         <TitleBlock text = {'текст для заголловка'}/>
        	<TextBlock><div>Текст статический для просто</div></TextBlock>

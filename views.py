@@ -33,9 +33,16 @@ class SiteHandler:
             'nameTrainingPrograms': request.match_info['nameTrainingPrograms'],
             'nameCourse': request.match_info['nameCourse']}
 
+    @aiohttp_jinja2.template('courseAll.html')
+    async def courseAll(self, request: web.Request) -> Dict[str, str]:
+        return {}
+
     async def getAll(self, request: web.Request) -> Dict[str, str]:        
         res = manager.coursesSelectAll()
-        return web.json_response(res)
+        return web.json_response(res, 
+            headers={
+            'Access-Control-Allow-Origin': 'http://localhost:8081'
+            })
     
     # чёрный ход для фронтенда, чтобы в моменте верстки пропустить запросы от клиента
     # по окнчанию разработки - закрыть
