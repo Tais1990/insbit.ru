@@ -10,6 +10,10 @@ from utils import Config
 
 from db import manager
 
+headersClientPermission = {
+    'Access-Control-Allow-Origin': 'http://localhost:8081'
+}
+
 class SiteHandler:
     def __init__(self, conf: Config, executor: ProcessPoolExecutor) -> None:
         self._conf = conf
@@ -39,10 +43,7 @@ class SiteHandler:
 
     async def getAll(self, request: web.Request) -> Dict[str, str]:        
         res = manager.coursesSelectAll()
-        return web.json_response(res, 
-            headers={
-            'Access-Control-Allow-Origin': 'http://localhost:8081'
-            })
+        return web.json_response(res, headers=headersClientPermission)
     
     # чёрный ход для фронтенда, чтобы в моменте верстки пропустить запросы от клиента
     # по окнчанию разработки - закрыть
@@ -56,12 +57,24 @@ class SiteHandler:
         return web.Response(status=200, headers=headers)      
 
     async def getCourse(self, request: web.Request) -> Dict[str, str]:
-        code = request.rel_url.query["code"]
-        res = manager.coursesSelect(code) 
-        return web.json_response(res, 
-            headers={
-            'Access-Control-Allow-Origin': 'http://localhost:8081'
-            })     
+        try:
+            codeValue = request.rel_url.query['code']
+            res = manager.coursesSelect(codeValue) 
+            if res == None:
+                return web.json_response(
+                    {'ErrorText': "Not found course with code " + codeValue},
+                    status=409,
+                    headers= headersClientPermission
+                    )
+            else:
+                return web.json_response(res,
+                    status = 200,
+                    headers=headersClientPermission)  
+        except Exception:
+            print('Неопознааная ошибка при работе с кодом ' + codeValue)
+            return web.Response(
+                status=500,
+                headers=headersClientPermission)       
     
     async def predict(self, request: web.Request) -> web.Response:
         form = await request.post()
@@ -74,19 +87,46 @@ class SiteHandler:
         return web.Response(body=raw_data, headers=headers)
 
     async def editCourse(self, request: web.Request) -> web.Response:
-        form = await request.json()
-        manager.coursesEdit(form.get('code'), form.get('name'), 
-            form.get('description'), form.get('numberCode'), 
-            form.get('forWhom'), form.get('duration'),
-            form.get('knowledgeRequired'), form.get('result'), form.get('htmlContent'))
-        headers = {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'http://localhost:8081'
-            }
-        return web.Response(status=200, headers=headers)
+        print('editCourse')
+        try:
+            form = await request.json()
+            #manager.codeIsExist(form.get('code'))
+            if form.get('type') == 'edit':
+                manager.coursesEdit(form.get('code'), form.get('name'), 
+                    form.get('description'), form.get('numberCode'), 
+                    form.get('forWhom'), form.get('duration'),
+                    form.get('knowledgeRequired'), form.get('result'), form.get('htmlContent'))
+            else:
+                manager.coursesAdd(form.get('code'), form.get('name'), 
+                    form.get('description'), form.get('numberCode'), 
+                    form.get('forWhom'), form.get('duration'),
+                    form.get('knowledgeRequired'), form.get('result'), form.get('htmlContent'))
+            headers = {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'http://localhost:8081'
+                }
+            return web.Response(status=200, headers=headers)
+        except Exception:
+            print('Неопознанная ошибка')
+            return web.Response(status=500, headers=headers)
 
     @aiohttp_jinja2.template('courseEdit.html')
     async def adminEditCourse(self, request: web.Request) -> Dict[str, str]:
         return {
             'nameTrainingPrograms': request.match_info['nameTrainingPrograms'],
             'nameCourse': request.match_info['nameCourse']}
+
+    @aiohttp_jinja2.template('courseEdit.html')
+    async def adminCreateCourse(self, request: web.Request) -> Dict[str, str]:
+        return {}
+
+    async def getNewCode(self, request: web.Request) -> Dict[str, str]:
+        strCode = 'code'
+        number = len(manager.coursesSelectAll()) + 1 
+        index =  0
+        while (manager.codeIsExist(strCode + str(number))) and (index < 100):            
+            number = number + 1 
+        # по идее, необходимо цапануть по рекурсии вычисление кода до талого, но пока оставляем так                   
+        res = {"code": strCode + str(number)}
+        return web.json_response(res, 
+            headers=headersClientPermission) 

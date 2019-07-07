@@ -24,20 +24,24 @@ ReactDOM.render(
 fetch(`${urlServer}/api/getCourse?code=${document.getElementById("nameCourse").value}`, 
 	{
 		method: 'GET',
-	})
+	})	
 	.then(function(response) {
 		return response.json();
 	})
 	.then(function(data) {
-		console.log('Request successful', data);
-		if (data != null && data[0] != null)
+		//console.log('Request successful', data);
+		if (data != null && data.ErrorText)
+		{
+			throw new Error(data.ErrorText);
+		}
+		if (data != null)
 		{
 			ReactDOM.render(
 				<div>
 					<Header/>
 					<SectionBlock>
 						<div className = 'course-wrapper'>
-							<AboutCourse courseData = {data[0]}/>	
+							<AboutCourse courseData = {data}/>	
 						</div>		        	
 			        </SectionBlock>					
 					<Footer/>
@@ -48,5 +52,12 @@ fetch(`${urlServer}/api/getCourse?code=${document.getElementById("nameCourse").v
 	})
 	.catch(function(error) {
 		console.log('Request failed', error)
+		ReactDOM.render(
+			<div>       
+				К сожалению, при загрузке курса произошла ошибка: <br/> {error.message}
+			</div>,
+			document.getElementById("root")
+		)
+
 	});
 
