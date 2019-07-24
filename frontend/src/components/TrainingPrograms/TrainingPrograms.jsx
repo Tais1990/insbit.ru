@@ -13,62 +13,56 @@ var trainingProgramsConst = [
     {
         codeIcon: "f1c0",
         fontIcon: "faFree",
-        name: "Database Training",
+        name: "Oracle",
         count: "145 Courses"
     },
     {
         codeIcon: "f121",
         fontIcon: "faFree",
-        name: "Web Development Training",
+        name: "WEB-разработка",
         count: "130 Courses"
     },
     {
         codeIcon: "e903",
         fontIcon: "icomoon",
-        name: "Java Training",
+        name: "Java",
         count: "44 Courses"
     },
     {
         codeIcon: "e900",
         fontIcon: "icomoon",
-        name: "Adobe Training",
+        name: "Компьютерная графика",
         count: "67 Courses"
     },
     {
         codeIcon: "f120",
         fontIcon: "faFree",
-        name: "Programming Training",
+        name: "Программирование",
         count: "115 Courses"
     },
     {
         codeIcon: "f10b",
         fontIcon: "faFree",
-        name: "Mobile Training",
+        name: "Обучение для пользователей",
         count: "14 Courses"
     },
     {
         codeIcon: "E9A1",
         fontIcon: "icomoon",
-        name: "Big Data Training",
+        name: "Linux",
         count: "21 Courses"
     },
     {
         codeIcon: "f0c2",
         fontIcon: "faFree",
-        name: "Cloud Training",
+        name: "Сетевые технологии",
         count: "81 Courses"
     },
     {
         codeIcon: "f200",
         fontIcon: "faFree",
-        name: "Business Skills Training",
+        name: "Бизнес-тренинги",
         count: "140 Courses"
-    },
-    {
-        codeIcon: "f108",
-        fontIcon: "faFree",
-        name: "Web Application Server Training",
-        count: "15 Courses"
     }
 ]
 class TrainingPrograms extends React.Component {

@@ -5,86 +5,61 @@ import SocialIcons from '../SocialIcons/SocialIcons.jsx';
 import Info from './Info.jsx';
 let infoArray = [
     {
-        title: "Training Options",
+        title: "Варианты обучения:",
         records: [
             {
-                text: "Live Online",
+                text: "Обучение в нашем классе",
                 link: "/"
             }, {
-                text: "Self-paced",
+                text: "Индивидуальные занятия",
                 link: "/"
             }, {
-                text: "Customized Onsite",
-                link: "/"
-            }, {
-                text: "Enterprise Solutions",
-                link: "/"
-            }, {
-                text: "All Training Options",
-                link: "/"
-            },
-        ]
-    }, {
-        title: "About Us",
-        records: [
-            {
-                text: "Testimonials",
-                link: "/"
-            }, {
-                text: "Client List",
-                link: "/"
-            }, {
-                text: "Company",
-                link: "/"
-            }, {
-                text: "Privacy Policy",
-                link: "/"
-            }, {
-                text: "In The ",
-                link: "/"
-            }, {
-                text: "Community",
-                link: "/"
-            }, {
-                text: "Train for Us",
-                link: "/"
-            }, {
-                text: "Cancelation Policy",
-                link: "/"
-            }, {
-                text: "Make a Payment",
+                text: "Корпоративные курсы",
                 link: "/"
             }
         ]
     }, {
-        title: "Microsoft",
+        title: "Сведения об АНО ДПО «ИнБИТ»:",
         records: [
             {
-                text: "Certified Microsoft ",
+                text: "О нас",
                 link: "/"
             }, {
-                text: "Courses",
+                text: "Отзывы",
                 link: "/"
             }, {
-                text: "Software Assurance Training",
+                text: "Политика конфиденциальности",
+                link: "/"
+            }, {
+                text: "Контакты + карта",
+                link: "/"
+            }, {
+                text: "Политика отмены",
+                link: "/"
+            }, {
+                text: "Все спец страницы",
                 link: "/"
             }
         ]
-    }
-    , {
-        title: "Resources",
+    }, {
+        title: "Ресурсы:",
         records: [
             {
-                text: "Newsletter",
+                text: "Подписаться на новостную рассылку",
                 link: "/"
             }, {
-                text: "Webucator Blog",
+                text: "Блог «ИнБИТ» (статьи с возможностью оценки L/Dl и комментариями)",
+                link: "/"
+            }
+        ]
+    }, {
+        title: "Каталог курсов:",
+        records: [
+            {
+                text: "Полный каталог курсов",
                 link: "/"
             }, {
-                text: "How-To Articles",
-                link: "/"
-            }, {
-                text: "Free Tutorials",
+                text: "Акции и скидки",
                 link: "/"
             }
         ]

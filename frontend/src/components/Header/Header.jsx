@@ -14,14 +14,16 @@ class Header extends React.Component {
         return <div>
             <header>
                 <div  className = 'header'>
+                    
                     <div className = 'header header__left'>             
-                        <Button title = 'ВОЙТИ' type = 'link' link = '/'/>    
-                    </div>         
+                        {/*<Button title = 'ВОЙТИ' type = 'link' link = '/'/>    */}
+                    </div> 
+                            
                     <div  className = 'header header__center'>
                         <Img src = {logo} width = {211} height = {52} link="/"/>
                     </div>
                     <div  className = 'header header__right contacts'>
-                        <div className = 'contacts contacts__tel'>+7-877-932-8228</div>
+                        <div className = 'contacts contacts__tel'>+7 999 565 55 75</div>
                         <Button title = 'НАШИ КОНТАКТЫ' type = 'button' color='light' link = '/'/>
                     </div>
                 </div>
