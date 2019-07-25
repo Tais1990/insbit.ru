@@ -1,6 +1,9 @@
 import peewee
 from db.dbhandle import *
+from db.migrator import *
 from db.models import *
+
+from playhouse.migrate import *
 
 # Работа с курсом непосредственное
 # создание таблицы
@@ -8,6 +11,20 @@ def coursesCreateTable():
     try:
         dbhandle.connect()
         Courses.create_table();
+        return 1
+    except peewee.InternalError as px:
+        print(str(px))
+        return 0
+#добавление колонок стоимости и дат, хотя странно как-то
+def coursesAddColumn():
+    try:
+        cost_field = CharField(max_length=1000, default='')
+        date_field = CharField(max_length=1000, default='')
+        migrate(
+            migrator.add_column('courses', 'cost', cost_field),
+            migrator.add_column('courses', 'date', date_field),
+        )
+
         return 1
     except peewee.InternalError as px:
         print(str(px))
@@ -29,7 +46,9 @@ def coursesSelectAll():
                 'duration' : record.duration,
                 'knowledgeRequired' : record.knowledgeRequired,
                 'result' : record.result,
-                'htmlContent' : record.htmlContent
+                'htmlContent' : record.htmlContent,
+                'cost' : record.cost,
+                'date' : record.date
             })
         return courses_data
     except peewee.InternalError as px:
@@ -53,7 +72,9 @@ def coursesSelect(code):
                 'duration' : record.duration,
                 'knowledgeRequired' : record.knowledgeRequired,
                 'result' : record.result,
-                'htmlContent' : record.htmlContent
+                'htmlContent' : record.htmlContent,
+                'cost' : record.cost,
+                'date' : record.date
             }
             return course_data
         else:
@@ -64,7 +85,7 @@ def coursesSelect(code):
         return None
 
 #добавление записи
-def coursesAdd(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, htmlContent):
+def coursesAdd(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, htmlContent, cost, date):
     row = Courses(
         name = name,
         code = code.lower().strip(),
@@ -74,13 +95,15 @@ def coursesAdd(code, name, description, numberCode, forWhom, duration, knowledge
         duration = duration,
         knowledgeRequired = knowledgeRequired,
         result = result,
-        htmlContent = htmlContent
+        htmlContent = htmlContent,
+        cost = cost,
+        date = date
     )
     row.save()
 
 #изменение записи
 #возможно стоит держать разностные изменения
-def coursesEdit(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, htmlContent):
+def coursesEdit(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, htmlContent, cost, date):
     course = Courses.select().where(Courses.code == code.strip()).get()
     course.name = name;
     course.description = description;
@@ -90,6 +113,8 @@ def coursesEdit(code, name, description, numberCode, forWhom, duration, knowledg
     course.knowledgeRequired = knowledgeRequired;
     course.result = result;
     course.htmlContent = htmlContent;
+    course.cost = cost;
+    course.date = date;
     course.save()
 
 #проверяем код на корректность, что такого ещё нет

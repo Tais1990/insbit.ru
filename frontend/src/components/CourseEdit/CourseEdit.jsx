@@ -23,6 +23,8 @@ class CourseEdit extends React.Component {
             knowledgeRequired : this.arrayToString(props.courseData.knowledgeRequired),
             result : this.arrayToString(this.props.courseData.result),
             htmlContent : props.courseData.htmlContent,
+            cost: props.courseData.cost,
+            date: props.courseData.date,
             textError: '',
             type: 'edit'
         } : {
@@ -43,6 +45,8 @@ class CourseEdit extends React.Component {
             + ' </li>\n'
             + ' <li> Модуль 2 </li>\n'
             +'</ol>',
+            cost:  '',
+            date: '',
             textError: '',
             type: 'create'
         };       
@@ -71,7 +75,9 @@ class CourseEdit extends React.Component {
                 knowledgeRequired : this.stringToArray(this.state.knowledgeRequired),
                 result : this.stringToArray(this.state.result),
                 htmlContent : this.state.htmlContent,
-                type: this.state.type
+                type: this.state.type,
+                cost: this.state.cost,
+                date: this.state.date
             })
         })
         // подключить обработку ошибки из базы
@@ -108,6 +114,12 @@ class CourseEdit extends React.Component {
             </div>
             <div className = 'course-edit__field'>
                 <label> Код для url: </label><input name="code" type="text" value={this.state.code} onChange={this.handleChange} />
+            </div>
+            <div className = 'course-edit__field'>
+                <label> Стоимость:</label> <input name="cost" type="text" value={this.state.cost} onChange={this.handleChange} />
+            </div>
+            <div className = 'course-edit__field'>
+                <label> Даты проведения:</label> <input name="date" type="text" value={this.state.date} onChange={this.handleChange} />
             </div>
             <div className = 'course-edit__field'>
                 <label> Описание курса:</label> <textarea name="description" value={this.state.description} onChange={this.handleChange} />

@@ -26,6 +26,9 @@ class Courses(BaseModel):
     knowledgeRequired = ArrayField(TextField, default=[])
     result = ArrayField(TextField, default=[])
     htmlContent = TextField()
+    cost = CharField(max_length=1000, default='')
+    date = CharField(max_length=1000, default='')
+
 
 
     class Meta:

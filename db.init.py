@@ -15,6 +15,8 @@ def main(args: Any = None) -> None:
         ["Описывать службы Office 365", "Администрировать Office 365 с помощью графической среды и Windows PowerShell"],
         '<ol> <li>Обзор служб Office 365 <ol> <li>Обзор служб Office 365</li><li>Обзор лицензирования Office 365</li><li>Конфигурация клиента Office 365</li><li>Клиенты Office 365</li><li>Обзор услуг Office 365 (Лаб. раб)</li></ol></li>'+
         '<li>Администрирование, инструменты и методы Office 365<ol><li>Управление Office 365 с помощью административных порталов</li><li>Управление Office 365 с помощью Windows PowerShell</li><li>Управление административным доступом в Office 365</li><li>Устранение неполадок администрирования в Office 365</li><li>Администрирование Office 365(Лаб. раб)</li></ol></li></ol>')
-
+def migration1(args: Any = None) -> None:
+    manager.coursesAddColumn();
 if __name__ == '__main__':
-    main()
+    #main()
+    migration1()

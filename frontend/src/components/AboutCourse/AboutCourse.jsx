@@ -16,6 +16,8 @@ class AboutCourse extends React.Component {
         	<div className = 'about-course__numberCode'>Код: {courseData.numberCode}</div>
             <Item title = 'Продолжительность:' data = {courseData.duration}/>
             <Item title = 'Описание курса:' data = {courseData.description}/>
+            <Item title = 'Стоимость:' data = {courseData.cost}/>
+            <Item title = 'Даты проведения:' data = {courseData.date}/>
             <Item title = 'Для кого:' data = {courseData.forWhom}/>
             <Item title = 'Необходимая подготовка:' data = {courseData.knowledgeRequired} type = 'list'/>
             <Item title = 'Результат обучения:' data = {courseData.result} type = 'list' beforeData = 'После прохождения курса Вы сможете:'/>
