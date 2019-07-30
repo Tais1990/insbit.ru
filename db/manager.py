@@ -18,8 +18,8 @@ def coursesCreateTable():
 #добавление колонок стоимости и дат, хотя странно как-то
 def coursesAddColumn():
     try:
-        cost_field = CharField(max_length=1000, default='')
-        date_field = CharField(max_length=1000, default='')
+        cost_field = CharField(max_length=50000, default='')
+        date_field = CharField(max_length=50000, default='')
         migrate(
             migrator.add_column('courses', 'cost', cost_field),
             migrator.add_column('courses', 'date', date_field),
@@ -83,21 +83,24 @@ def coursesSelect(code):
         print('errror')
         print(str(px))
         return None
-
+def cutOff(str):
+    if len(str) > 50000:
+        str = str[:50000]
+    return str
 #добавление записи
 def coursesAdd(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, htmlContent, cost, date):
     row = Courses(
-        name = name,
+        name = cutOff(name),
         code = code.lower().strip(),
-        description = description,
+        description = cutOff(description),
         numberCode = numberCode,
-        forWhom = forWhom,
-        duration = duration,
-        knowledgeRequired = knowledgeRequired,
-        result = result,
-        htmlContent = htmlContent,
-        cost = cost,
-        date = date
+        forWhom = cutOff(forWhom),
+        duration = cutOff(duration),
+        knowledgeRequired = cutOff(knowledgeRequired),
+        result = cutOff(result),
+        htmlContent = cutOff(htmlContent),
+        cost = cutOff(cost),
+        date = cutOff(date)
     )
     row.save()
 
@@ -105,16 +108,16 @@ def coursesAdd(code, name, description, numberCode, forWhom, duration, knowledge
 #возможно стоит держать разностные изменения
 def coursesEdit(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, htmlContent, cost, date):
     course = Courses.select().where(Courses.code == code.strip()).get()
-    course.name = name;
-    course.description = description;
+    course.name = cutOff(name);
+    course.description = cutOff(description);
     course.numberCode = numberCode;
-    course.forWhom = forWhom;
-    course.duration = duration;
-    course.knowledgeRequired = knowledgeRequired;
-    course.result = result;
-    course.htmlContent = htmlContent;
-    course.cost = cost;
-    course.date = date;
+    course.forWhom = cutOff(forWhom);
+    course.duration = cutOff(duration);
+    course.knowledgeRequired = cutOff(knowledgeRequired);
+    course.result = cutOff(result);
+    course.htmlContent = cutOff(htmlContent);
+    course.cost = cutOff(cost);
+    course.date = cutOff(date);
     course.save()
 
 #проверяем код на корректность, что такого ещё нет
