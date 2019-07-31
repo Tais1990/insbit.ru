@@ -7,13 +7,17 @@ class SectionBlock extends React.Component {
         super();
     }
     render(props, state) {
-        let {title, children, color} = this.props;
+        let {title, children, color, width} = this.props;
         let classes = `section-block`;		
 		if (color) {
 			classes += ` section-block_color_${color}`;
-		}		
+		}	
+        if (width) {
+            classes += ` section-block_width_${width}`;
+        }
+        let classesTitle = classes + ` section-block__title`	;
         return <section className = {classes}> 
-        	{title && <h1 className = 'section-block__title'>{title} </h1> }
+        	{title && <h1 className = {classesTitle}>{title} </h1> }
         	{children}     	
         </section>
     }
@@ -22,6 +26,7 @@ class SectionBlock extends React.Component {
 SectionBlock.propTypes = {
     title: PropTypes.string,    
     children: PropTypes.any,
-    color: PropTypes.oneOf(['grey'])
+    color: PropTypes.oneOf(['grey']),
+    width: PropTypes.oneOf(['narrow-width'])
 };
 export default SectionBlock;

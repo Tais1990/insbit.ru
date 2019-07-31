@@ -20,6 +20,7 @@ module.exports = {
 		course: `${PATHS.src}/course.jsx`,
 		courseEdit: `${PATHS.src}/courseEdit.jsx`,
 		courseAll: `${PATHS.src}/courseAll.jsx`,
+		aboutUs: `${PATHS.src}/aboutUs.jsx`,
 	},
 	output: {		
 		filename: `${PATHS.assets}js/[name].[hash].js`,
@@ -108,6 +109,12 @@ module.exports = {
 			filename: 'courseAll.html',
 			inject: false,
 			chunks: ['courseAll', 'vendors']
+		}),
+		new HtmlWebpackPlugin({
+			template: `${PATHS.src}/aboutUs.html`,
+			filename: 'aboutUs.html',
+			inject: false,
+			chunks: ['aboutUs', 'vendors']
 		}),
 		// копирование файлов
 		new CopyWebpackPlugin([

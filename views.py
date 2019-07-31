@@ -27,9 +27,11 @@ class SiteHandler:
     async def about(self, request: web.Request) -> Dict[str, str]:
         return {}
   
-    @aiohttp_jinja2.template('about1.html')
-    async def aboutName(self, request: web.Request) -> Dict[str, str]:
-        return {'message': request.match_info['name']}
+    @aiohttp_jinja2.template('aboutUs.html')
+    async def aboutUs(self, request: web.Request) -> Dict[str, str]:
+        return {
+            'type': request.match_info['type']
+            }
 
     @aiohttp_jinja2.template('course.html')
     async def aboutCourse(self, request: web.Request) -> Dict[str, str]:
@@ -96,7 +98,7 @@ class SiteHandler:
                     form.get('description'), form.get('numberCode'), 
                     form.get('forWhom'), form.get('duration'),
                     form.get('knowledgeRequired'), form.get('result'), form.get('htmlContent'),
-                    form.get('cost'), form.get('date'))
+                    form.get('cost'), form.get('date'), form.get('vendor'))
             else:
                 manager.coursesAdd(form.get('code'), form.get('name'), 
                     form.get('description'), form.get('numberCode'), 

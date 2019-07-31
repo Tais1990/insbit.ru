@@ -18,6 +18,11 @@
 		font-weight: 300;
     	line-height: 40px;
     	text-align: center;
-    	font-family: 'Open Sans';
+    	font-family: 'Open Sans';    	
+	}
+	&_width {
+		&_narrow-width {
+			padding-bottom: 0px;			
+		}		
 	}
 }
