@@ -6,15 +6,26 @@ from playhouse.postgres_ext import ArrayField
 class BaseModel(Model):
     class Meta:
         database = dbhandle
- 
- 
-class Category(BaseModel):
-    id = PrimaryKeyField(null=False)    
-    name = CharField(max_length=100)     
-    class Meta:
-        db_table = "categories"
-        order_by = ('name',)
+# справочники
+# вендор
+class Vendors(BaseModel):
+    id = PrimaryKeyField(null=False)
+    code = CharField(max_length=1000)
+    name = CharField(max_length=1000)
+    #class Meta:
+    #    db_table = "vendors"
+    #    order_by = ('code')
+# напрвление обучения
+class TrainingPrograms(BaseModel):
+    id = PrimaryKeyField(null=False)
+    code = CharField(max_length=1000)
+    name = CharField(max_length=1000)
+    vendor = ForeignKeyField(Vendors)
+    #class Meta:
+    #    db_table = "trainingPrograms"
+    #    order_by = ('code')
 
+# основная таблица с курсами
 class Courses(BaseModel):
     id = PrimaryKeyField(null=False)
     code = CharField(max_length=1000)
@@ -28,6 +39,8 @@ class Courses(BaseModel):
     htmlContent = TextField()
     cost = CharField(max_length=50000, default='')
     date = CharField(max_length=50000, default='')
+    vendor = ForeignKeyField(Vendors)
+    trainingProgram =  ForeignKeyField(TrainingPrograms)
 
 
 

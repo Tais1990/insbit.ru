@@ -13,6 +13,11 @@ from db import manager
 headersClientPermission = {
     'Access-Control-Allow-Origin': 'http://localhost:8081'
 }
+title_page_about_us = {
+    'about': 'О нас',
+    'privacy-policy': 'Политика конфиденциальности',
+    'cancelation': 'Политика отмены'
+}
 
 class SiteHandler:
     def __init__(self, conf: Config, executor: ProcessPoolExecutor) -> None:
@@ -29,8 +34,14 @@ class SiteHandler:
   
     @aiohttp_jinja2.template('aboutUs.html')
     async def aboutUs(self, request: web.Request) -> Dict[str, str]:
+        title = 'Страница'
+        try:
+            title = title_page_about_us[request.match_info['type']]
+        except Exception:
+            print('Не нашли данных в словаре, для именования сотаниц')
         return {
-            'type': request.match_info['type']
+            'type': request.match_info['type'],
+            'title' : title
             }
 
     @aiohttp_jinja2.template('course.html')
@@ -98,13 +109,13 @@ class SiteHandler:
                     form.get('description'), form.get('numberCode'), 
                     form.get('forWhom'), form.get('duration'),
                     form.get('knowledgeRequired'), form.get('result'), form.get('htmlContent'),
-                    form.get('cost'), form.get('date'), form.get('vendor'))
+                    form.get('cost'), form.get('date'), form.get('vendor'), form.get('trainingProgram'))
             else:
                 manager.coursesAdd(form.get('code'), form.get('name'), 
                     form.get('description'), form.get('numberCode'), 
                     form.get('forWhom'), form.get('duration'),
                     form.get('knowledgeRequired'), form.get('result'), form.get('htmlContent'),
-                    form.get('cost'), form.get('date'))
+                    form.get('cost'), form.get('date'), form.get('vendor'), form.get('trainingProgram'))
             headers = {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': 'http://localhost:8081'
@@ -133,4 +144,11 @@ class SiteHandler:
         # по идее, необходимо цапануть по рекурсии вычисление кода до талого, но пока оставляем так                   
         res = {"code": strCode + str(number)}
         return web.json_response(res, 
-            headers=headersClientPermission) 
+            headers=headersClientPermission)
+
+    async def getVendorsAll(self, request: web.Request) -> Dict[str, str]:        
+        res = manager.vendorSelectAll()
+        return web.json_response(res, headers=headersClientPermission) 
+    async def getTrainingProgramsAll(self, request: web.Request) -> Dict[str, str]:        
+        res = manager.trainingProgramSelectAll()
+        return web.json_response(res, headers=headersClientPermission) 

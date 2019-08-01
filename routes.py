@@ -25,6 +25,9 @@ def init_routes(app: web.Application, handler: SiteHandler) -> None:
     add_route('POST', '/api/editCourse', handler.editCourse, name='editCourse')
     add_route('GET', '/api/getNewCode', handler.getNewCode, name = 'getNewCode')
 
+    add_route('GET', '/api/getVendorsAll', handler.getVendorsAll, name = 'getVendorsAll')
+    add_route('GET', '/api/getTrainingProgramsAll', handler.getTrainingProgramsAll, name = 'getTrainingProgramsAll')
+
     # админка. как появятся сесии - ПЕРЕПИСАТЬ!!!!
     add_route('GET', '/admin/Yx5wvGduYsGrYwTKojFR/{nameTrainingPrograms}/course/{nameCourse}', handler.adminEditCourse, name='adminEditCourse')
     add_route('GET', '/admin/Yx5wvGduYsGrYwTKojFR/courseCreate', handler.adminCreateCourse, name='adminCreateCourse')

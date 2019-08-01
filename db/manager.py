@@ -5,11 +5,64 @@ from db.models import *
 
 from playhouse.migrate import *
 
+# работа со справочниками
+def dictionaryCreateTables():
+    try:
+        dbhandle.connect()
+        Vendors.create_table();
+        TrainingPrograms.create_table();
+        return 1
+    except peewee.InternalError as px:
+        print(str(px))
+        return 0
+def vendorAdd(code, name):
+    row = Vendors(
+        name = name,
+        code = code
+    )
+    row.save()
+def trainingProgramAdd(code, name, vendor_id):
+    row = TrainingPrograms(
+        name = name,
+        code = code,
+        vendor = vendor_id
+    )
+    row.save()
+def vendorSelectAll():
+    try:
+        vendors = Vendors.select()
+        vendors_data = []
+        for record in vendors:
+            vendors_data.append({
+                'id': record.id,
+                'code': record.code,
+                'name': record.name                
+            })
+        return vendors_data
+    except peewee.InternalError as px:
+        print(str(px))
+        return 0
+def trainingProgramSelectAll():
+    try:
+        trainingPrograms = TrainingPrograms.select()
+        trainingPrograms_data = []
+        for record in trainingPrograms:
+            trainingPrograms_data.append({
+                'id': record.id,
+                'code': record.code,
+                'name': record.name,
+                'vendorName': record.vendor.name               
+            })
+        return trainingPrograms_data
+    except peewee.InternalError as px:
+        print(str(px))
+        return 0
+
 # Работа с курсом непосредственное
 # создание таблицы
 def coursesCreateTable():
     try:
-        dbhandle.connect()
+        #dbhandle.connect()
         Courses.create_table();
         return 1
     except peewee.InternalError as px:
@@ -74,7 +127,11 @@ def coursesSelect(code):
                 'result' : record.result,
                 'htmlContent' : record.htmlContent,
                 'cost' : record.cost,
-                'date' : record.date
+                'date' : record.date,
+                'vendorID' : record.vendor.id,
+                'vendorName' : record.vendor.name,
+                'trainingProgramID': record.trainingProgram.id,
+                'trainingProgramName': record.trainingProgram.name
             }
             return course_data
         else:
@@ -88,7 +145,7 @@ def cutOff(str):
         str = str[:50000]
     return str
 #добавление записи
-def coursesAdd(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, htmlContent, cost, date):
+def coursesAdd(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, htmlContent, cost, date, vendor, trainingProgram):
     row = Courses(
         name = cutOff(name),
         code = code.lower().strip(),
@@ -100,13 +157,15 @@ def coursesAdd(code, name, description, numberCode, forWhom, duration, knowledge
         result = cutOff(result),
         htmlContent = cutOff(htmlContent),
         cost = cutOff(cost),
-        date = cutOff(date)
+        date = cutOff(date),
+        vendor = vendor,
+        trainingProgram = trainingProgram
     )
     row.save()
 
 #изменение записи
 #возможно стоит держать разностные изменения
-def coursesEdit(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, htmlContent, cost, date):
+def coursesEdit(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, htmlContent, cost, date, vendor, trainingProgram):
     course = Courses.select().where(Courses.code == code.strip()).get()
     course.name = cutOff(name);
     course.description = cutOff(description);
@@ -118,6 +177,8 @@ def coursesEdit(code, name, description, numberCode, forWhom, duration, knowledg
     course.htmlContent = cutOff(htmlContent);
     course.cost = cutOff(cost);
     course.date = cutOff(date);
+    course.vendor = vendor;
+    course.trainingProgram = trainingProgram;
     course.save()
 
 #проверяем код на корректность, что такого ещё нет

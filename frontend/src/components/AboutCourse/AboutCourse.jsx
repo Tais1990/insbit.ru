@@ -9,8 +9,7 @@ class AboutCourse extends React.Component {
     }
 
     render(props, state) {
-        let {courseData} = this.props;
-        
+        let {courseData} = this.props;        
         return <div className = 'about-course'>
         	<div className = 'about-course__title'>{ courseData.name }</div>
         	<div className = 'about-course__numberCode'>Код: {courseData.numberCode}</div>
@@ -23,6 +22,8 @@ class AboutCourse extends React.Component {
             <Item title = 'Результат обучения:' data = {courseData.result} type = 'list' beforeData = 'После прохождения курса Вы сможете:'/>
             <div className = 'about-course__title'>Запишитесь на курс по почте info@insbit.ru или по телефону +79995655575</div>
             <Item title = 'Содержание курса:' data={courseData.htmlContent} type='html'/>
+            <Item title = 'Вендор:' data={courseData.vendorName}/>
+            <Item title = 'Направление:' data={courseData.trainingProgramName}/>
         </div>
     }
 }

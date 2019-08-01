@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import styles from './CourseEdit.scss';
+import VendorsStore from '../../stores/Vendors.jsx';
 
 import {
   withRouter
@@ -25,6 +26,8 @@ class CourseEdit extends React.Component {
             htmlContent : props.courseData.htmlContent,
             cost: props.courseData.cost,
             date: props.courseData.date,
+            vendor: props.courseData.vendorID,
+            trainingProgram: props.courseData.trainingProgramID,
             textError: '',
             type: 'edit'
         } : {
@@ -47,6 +50,8 @@ class CourseEdit extends React.Component {
             +'</ol>',
             cost:  '',
             date: '',
+            vendor: 0,
+            trainingProgram: 0,
             textError: '',
             type: 'create'
         };       
@@ -77,7 +82,9 @@ class CourseEdit extends React.Component {
                 htmlContent : this.state.htmlContent,
                 type: this.state.type,
                 cost: this.state.cost,
-                date: this.state.date
+                date: this.state.date,
+                vendor: this.state.vendor,
+                trainingProgram: this.state.trainingProgram
             })
         })
         // подключить обработку ошибки из базы
@@ -86,7 +93,6 @@ class CourseEdit extends React.Component {
             {
                 window.location.href = "/courseAll";
             }})
-        //.then(data => console.log(data))
         .catch(err => {
             console.log('ERROE');
             console.log(err);
@@ -137,13 +143,31 @@ class CourseEdit extends React.Component {
                 <label> Содержание курса:</label> <textarea name="htmlContent" value={this.state.htmlContent} onChange={this.handleChange} />
             </div>
             <div className = 'course-edit__field'>
+                <label> Вендор:</label>
+                <select name = "vendor" value={this.state.vendor} onChange={this.handleChange}>
+                    <option disabled value = {0} style = {{display: 'none'}}> -- select an option -- </option>
+                    {VendorsStore.getVendors().map(vendor => 
+                        <option key = {vendor.id} value={vendor.id}>{vendor.name}</option>)
+                    }                                     
+                </select>
+            </div>
+            <div className = 'course-edit__field'>
+                <label> Напрвление:</label>
+                <select name = "trainingProgram" value={this.state.trainingProgram} onChange={this.handleChange}>
+                    <option disabled value = {0} style = {{display: 'none'}}> -- select an option -- </option>
+                    {VendorsStore.getTrainingPrograms().map(trainingProgram => 
+                        <option key = {trainingProgram.id} value={trainingProgram.id}>{trainingProgram.name} / {trainingProgram.vendorName}</option>)
+                    }                                     
+                </select>
+            </div>
+            <div className = 'course-edit__field'>
                 <input type="submit" value="Отправить" />
             </div>
+            
             <div>{this.state.textError}</div>
           </form>
     }
 }
-
 CourseEdit.propTypes = {
 	courseData: PropTypes.any,
     code: PropTypes.string
