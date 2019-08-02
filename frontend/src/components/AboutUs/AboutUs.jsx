@@ -5,6 +5,8 @@ import Item from '../Item/Item.jsx';
 import SectionBlock from '../SectionBlock/SectionBlock.jsx';
 import TextBlock from '../TextBlock/TextBlock.jsx';
 import TitleBlock from '../TitleBlock/TitleBlock.jsx';
+import ContactUs from '../ContactUs/ContactUs.jsx';
+import MapGoogle from '../MapGoogle/MapGoogle.jsx';
 
 class AboutUs extends React.Component {
     constructor() {
@@ -123,6 +125,18 @@ class AboutUs extends React.Component {
                 </SectionBlock>
             </div>
         }
+        if (type == 'contact') {
+            
+            return <div className = 'about-us about-us__cancelation'>
+                <SectionBlock title = 'Контакты' width = 'narrow-width'/>  
+                <SectionBlock title = 'Напишите, и мы Вам поможем' color='grey'>
+                    <ContactUs/>  
+                    <div className = 'container container__contact'>
+                        <MapGoogle/>
+                    </div>
+                </SectionBlock>
+            </div>
+        }
         else 
         {
             return <div>
@@ -131,7 +145,9 @@ class AboutUs extends React.Component {
         }
     }
 }
+
+
 AboutUs.propTypes = {
-	type: PropTypes.oneOf(['about', 'privacy-policy', 'cancelation'])
+	type: PropTypes.oneOf(['about', 'privacy-policy', 'cancelation', 'contact'])
 };
 export default AboutUs;

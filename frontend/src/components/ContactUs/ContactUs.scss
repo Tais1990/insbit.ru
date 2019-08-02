@@ -1,0 +1,78 @@
+@import "../../assets/scss/_variables.scss";
+.contact-us {
+	margin: 0 auto;
+	font-family: Open Sans;
+	margin-top: 20px;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	width: 50%;
+
+	@include tablet {
+		width: 67%;
+	}
+	@include mobile {
+		width: 80%;
+	}
+	&__field {
+		font-family: Open Sans;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-direction: row;
+		flex-direction: row;
+		line-height: 1.5;
+		margin: 5px;
+		font-size: 18px;
+		line-height: 28px;
+		font-weight: 300;
+		@include mobile {
+			-webkit-flex-direction: column;
+			flex-direction: column;
+		}
+
+		label {			
+		    text-align: right;
+		    margin-bottom: 0;
+		    padding-right: 15px;
+		    width: 30%;
+		    margin: auto 0;   		
+			@include mobile {
+				width: 100%;
+				text-align: left;
+			}
+		}
+		textarea {
+			flex-grow: 1;
+			height: 100px;
+			font-family: Open Sans;
+		}
+		input {
+			flex-grow: 1;
+			font-family: Open Sans;
+		}
+		select {
+			flex-grow: 1;
+			font-family: Open Sans;
+		}
+	}
+	&__button {
+		input {
+			color: #fff;
+	    	background-color: #3a5aa0;
+	    	border-color: #334f8d;
+	    	touch-action: manipulation;
+	    	cursor: pointer;
+	    	background-image: none;
+	    	border: 1px solid transparent;
+	    	white-space: nowrap;
+	    	padding: 6px 12px;
+	        border-radius: 4px;
+	        line-height: 28px;
+	        height: 40px;
+	        font-size: 18px;
+	    	font-weight: 300;
+    	}
+	}
+}
+

@@ -1,4 +1,5 @@
 from peewee import *
+import datetime
 from db.dbhandle import *
 from peewee import TextField
 from playhouse.postgres_ext import ArrayField
@@ -47,3 +48,17 @@ class Courses(BaseModel):
     class Meta:
         db_table = "courses"
         order_by = ('code',)
+
+# вспомогательные таблицы
+# таблица для обратной связи
+class Outbox(BaseModel):
+    id = PrimaryKeyField(null=False)    
+    name = CharField(max_length=1000)
+    email = CharField(max_length=1000)
+    phone = CharField(max_length=1000)
+    message = CharField(max_length=50000)
+    created_date = DateTimeField(default=datetime.datetime.now)
+    send_date = DateTimeField(null = True)
+    is_sended = BooleanField(default=False)
+    textError = CharField(max_length=50000, null = True)
+    

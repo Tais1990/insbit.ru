@@ -23,20 +23,20 @@ let infoArray = [
         records: [
             {
                 text: "О нас",
-                link: "/"
+                link: "/about-us/about"
             /*}, {
                 text: "Отзывы",
                 link: "/"
                 */
             }, {
                 text: "Политика конфиденциальности",
-                link: "/"
+                link: "/about-us/privacy-policy"
             }, {
                 text: "Контакты",
-                link: "/"
+                link: "/about-us/contact"
             }, {
                 text: "Политика отмены",
-                link: "/"
+                link: "/about-us/cancelation"
             }/*, {
                 text: "Все спец страницы",
                 link: "/"

@@ -1,4 +1,5 @@
 import peewee
+import datetime
 from db.dbhandle import *
 from db.migrator import *
 from db.models import *
@@ -189,3 +190,25 @@ def codeIsExist(code):
     except peewee.InternalError as px:
         print(str(px))
         return 0
+
+# работа со вспомогательныи таблицами
+# таблица отправки сообщений для обратной связи
+def outboxCreateTable():
+    try:
+        #dbhandle.connect()
+        Outbox.create_table();
+        return 1
+    except peewee.InternalError as px:
+        print(str(px))
+        return 0
+
+def outboxAdd(name, email, phone, message):
+    row = Outbox(
+        name = name,
+        email = email,
+        phone = phone,
+        message = message
+    )
+    row.save()
+
+

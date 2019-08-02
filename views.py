@@ -16,7 +16,8 @@ headersClientPermission = {
 title_page_about_us = {
     'about': 'О нас',
     'privacy-policy': 'Политика конфиденциальности',
-    'cancelation': 'Политика отмены'
+    'cancelation': 'Политика отмены',
+    'contact': 'Контакты'
 }
 
 class SiteHandler:
@@ -100,7 +101,6 @@ class SiteHandler:
         return web.Response(body=raw_data, headers=headers)
 
     async def editCourse(self, request: web.Request) -> web.Response:
-        print('editCourse')
         try:
             form = await request.json()
             #manager.codeIsExist(form.get('code'))
@@ -151,4 +151,17 @@ class SiteHandler:
         return web.json_response(res, headers=headersClientPermission) 
     async def getTrainingProgramsAll(self, request: web.Request) -> Dict[str, str]:        
         res = manager.trainingProgramSelectAll()
-        return web.json_response(res, headers=headersClientPermission) 
+        return web.json_response(res, headers=headersClientPermission)
+# создания сообщения обратной связи
+    async def createOutbox(self, request: web.Request) -> web.Response:
+        headers = {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:8081'
+        }
+        #try:
+        form = await request.json()
+        manager.outboxAdd(form.get('name'), form.get('email'), form.get('phone'), form.get('message'))            
+        return web.Response(status=200, headers=headers)
+        #except Exception:
+        #    print('Неопознанная ошибка')
+        #    return web.Response(status=500, headers=headers) 

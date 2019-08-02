@@ -24,7 +24,7 @@ class Header extends React.Component {
                     </div>
                     <div  className = 'header header__right contacts'>
                         <div className = 'contacts contacts__tel'>+7 999 565 55 75</div>
-                        <Button title = 'НАШИ КОНТАКТЫ' type = 'button' color='light' link = '/'/>
+                        <Button title = 'НАШИ КОНТАКТЫ' type = 'button' color='light' link = '/about-us/contact'/>
                     </div>
                 </div>
             </header>

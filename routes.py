@@ -23,6 +23,7 @@ def init_routes(app: web.Application, handler: SiteHandler) -> None:
     add_route('OPTIONS', '/api/getCourse', handler.getCourseOPTIONS, name = 'getCourseOPTIONS')
 
     add_route('POST', '/api/editCourse', handler.editCourse, name='editCourse')
+    add_route('POST', '/api/createOutbox', handler.createOutbox, name='createOutbox')
     add_route('GET', '/api/getNewCode', handler.getNewCode, name = 'getNewCode')
 
     add_route('GET', '/api/getVendorsAll', handler.getVendorsAll, name = 'getVendorsAll')
