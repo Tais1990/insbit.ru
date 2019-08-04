@@ -27,7 +27,7 @@ class Button extends React.Component {
 Button.propTypes = {
     title: PropTypes.string,    
     link: PropTypes.string,
-    type: PropTypes.oneOf(['link', 'button', 'button']),
-    color: PropTypes.oneOf(['dark', 'light'])
+    type: PropTypes.oneOf(['link', 'button']),
+    color: PropTypes.oneOf(['dark', 'light', 'red'])
 };
 export default Button;

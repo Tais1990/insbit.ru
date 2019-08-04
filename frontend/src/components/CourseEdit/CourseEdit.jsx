@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import styles from './CourseEdit.scss';
 import VendorsStore from '../../stores/Vendors.jsx';
+import { observer } from 'mobx-react';
+
+
 
 import {
   withRouter
 } from 'react-router-dom'
 
 var urlServer = MODE_NAME == "development" ? 'http://localhost:8080' : '';
-
+@observer
 class CourseEdit extends React.Component {
     constructor(props) {
         super(props);
@@ -59,6 +62,7 @@ class CourseEdit extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     handleChange(event) {
         this.setState({[event.target.name]: event.target.value});
     }
@@ -107,7 +111,7 @@ class CourseEdit extends React.Component {
         return str.replace(/^\s*/,'').replace(/\s*$/,'').split('\n');
     }
 
-    render(props, state) { 
+    render(props, state) {
         return <form className = 'course-edit' onSubmit={this.handleSubmit}>
             <div className = 'course-edit__field'>
                 <label> Название:</label> <input name="name" type="text" value={this.state.name} onChange={this.handleChange} />
@@ -146,7 +150,7 @@ class CourseEdit extends React.Component {
                 <label> Вендор:</label>
                 <select name = "vendor" value={this.state.vendor} onChange={this.handleChange}>
                     <option disabled value = {0} style = {{display: 'none'}}> -- select an option -- </option>
-                    {VendorsStore.getVendors().map(vendor => 
+                    {VendorsStore.vendors.map(vendor => 
                         <option key = {vendor.id} value={vendor.id}>{vendor.name}</option>)
                     }                                     
                 </select>
@@ -155,7 +159,7 @@ class CourseEdit extends React.Component {
                 <label> Напрвление:</label>
                 <select name = "trainingProgram" value={this.state.trainingProgram} onChange={this.handleChange}>
                     <option disabled value = {0} style = {{display: 'none'}}> -- select an option -- </option>
-                    {VendorsStore.getTrainingPrograms().map(trainingProgram => 
+                    {VendorsStore.trainingPrograms.map(trainingProgram => 
                         <option key = {trainingProgram.id} value={trainingProgram.id}>{trainingProgram.name} / {trainingProgram.vendorName}</option>)
                     }                                     
                 </select>

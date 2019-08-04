@@ -1,0 +1,12 @@
+@import "../../assets/scss/_variables.scss";
+.catalog {
+	margin: 0 auto;
+	width: 970px;
+	@include tablet {
+		width: 750px;
+	}
+	@include mobile {
+		width: 90%;
+	}	
+}
+

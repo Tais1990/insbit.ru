@@ -55,6 +55,11 @@ class SiteHandler:
     async def courseAll(self, request: web.Request) -> Dict[str, str]:
         return {}
 
+    # страницы каталога
+    @aiohttp_jinja2.template('catalog.html')
+    async def catalog(self, request: web.Request) -> Dict[str, str]:
+        return {}
+
     async def getAll(self, request: web.Request) -> Dict[str, str]:        
         res = manager.coursesSelectAll()
         return web.json_response(res, headers=headersClientPermission)

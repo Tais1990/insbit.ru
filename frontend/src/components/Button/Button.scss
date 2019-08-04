@@ -28,5 +28,13 @@ $mail-color: #4165b3;
 				background-color: #4165b3;
 			}
     	}
+    	&_red {
+    		color: #fff;
+    		border-color: #fff;
+    		background-color: #ff7800;
+    		&:hover {
+				background-color: #e66c00;
+			}
+    	}
     }
 }

@@ -37,8 +37,8 @@ if (document.getElementById("nameCourse").value != null && document.getElementBy
 					<div className = 'course-wrapper'>
 						Скоро тут будет нормальная админка
 						<CourseEdit courseData = {data}/>
-					</div>,
-					document.getElementById("root")
+					</div>
+					, document.getElementById("root")
 				);
 			}
 		})
@@ -70,8 +70,8 @@ else
 					<div className = 'course-wrapper'>
 						Скоро тут будет нормальная админка
 						<CourseEdit code = {data.code}/>
-					</div>,
-					document.getElementById("root")
+					</div>
+					, document.getElementById("root")
 				)
 			}
 		})

@@ -37,5 +37,10 @@ $srcFaBrands: $PARH_RESOURCE +'fonts/webfonts/fa-brands-400.ttf';
 		&_social-icons {
 			margin: auto;
 		}
+		&_list__record {
+    		line-height: 1.5;
+    		float: right;
+    		font-weight: 900;
+		}
 	}
 }

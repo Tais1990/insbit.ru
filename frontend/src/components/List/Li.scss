@@ -1,0 +1,38 @@
+.training-program {
+	display: -webkit-flex; /* Safari */
+ 	display: flex;
+    -webkit-flex-direction: column;
+ 	flex-direction: column;
+	text-align: center;
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-bottom: 50px;
+	width: 270px;
+	a {
+		color: #3a5aa0;
+    	text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+	
+	&__title {
+		margin-top: 20px;
+		font-size: 22px;
+    	line-height: 32px;
+        font-weight: 300;
+	}
+
+	&__subtitle {
+		color: #2c3e50;
+		opacity: .3;
+		letter-spacing: 1px;
+		font-weight: 600;
+		text-transform: uppercase;
+		font-size: 12px;
+    	line-height: 22px;
+    	margin-top: 10px;
+	}
+	
+
+}
