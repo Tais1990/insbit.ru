@@ -63,7 +63,7 @@ class ContactUs extends React.Component {
             </div>
             
             <div className = 'contact-us__field contact-us__button'>
-                <input type="submit" value="Отправить" />
+                <label> </label><input type="submit" value="Отправить" />
             </div>
             {/*TO-DO подключить отображение ошибки целиком на запрос и для каждого поля в отдеьности*/}
 

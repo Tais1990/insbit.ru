@@ -7,6 +7,7 @@ import TextBlock from '../TextBlock/TextBlock.jsx';
 import TitleBlock from '../TitleBlock/TitleBlock.jsx';
 import ContactUs from '../ContactUs/ContactUs.jsx';
 import MapGoogle from '../MapGoogle/MapGoogle.jsx';
+import MapLeaflet from '../MapLeaflet/MapLeaflet.jsx';
 
 class AboutUs extends React.Component {
     constructor() {
@@ -132,7 +133,7 @@ class AboutUs extends React.Component {
                 <SectionBlock title = 'Напишите, и мы Вам поможем' color='grey'>
                     <ContactUs/>  
                     <div className = 'container container__contact'>
-                        <MapGoogle/>
+                        <MapLeaflet/>
                     </div>
                 </SectionBlock>
             </div>
