@@ -52,9 +52,30 @@ def trainingProgramSelectAll():
                 'id': record.id,
                 'code': record.code,
                 'name': record.name,
-                'vendorName': record.vendor.name               
+                'vendorName': record.vendor.name,
+                'vendorID': record.vendor.id,
+                'vendorCode': record.vendor.code,
             })
         return trainingPrograms_data
+    except peewee.InternalError as px:
+        print(str(px))
+        return 0
+
+# получение по коду направления обучения, список его курсов
+def coursesByTrainingProgram(codeTrainingProgram):
+    try:
+        courses = Courses.select().join(TrainingPrograms).where(TrainingPrograms.code == codeTrainingProgram)
+        courses_data = []
+        for record in courses:
+            courses_data.append({
+                'id': record.id,
+                'code': record.code,
+                'name': record.name,
+                'cost': record.cost,
+                'description': record.description,
+                'date': record.date
+            })
+        return courses_data
     except peewee.InternalError as px:
         print(str(px))
         return 0

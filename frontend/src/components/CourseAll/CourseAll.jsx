@@ -8,8 +8,7 @@ class CourseAll extends React.Component {
     }
 
     render(props, state) {
-        let {courses} = this.props; 
-        console.log(courses)       
+        let {courses} = this.props;     
         return <div className = 'course-all'>
         	{courses.map((course) => 
                 <a key = {course.code} className = 'course-all__record' href = {urlServer + '/1/course/' + course.code}>

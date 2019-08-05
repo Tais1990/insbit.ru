@@ -5,6 +5,7 @@ class Vendors {
 	@observable trainingPrograms = [];
 	@observable isLoadVendors = false;
 	@observable isLoadTrainingPrograms = false;
+	
 
 	
 	constructor() {
@@ -60,10 +61,59 @@ class Vendors {
 			this.vendors.forEach(function (elem, index) {
 				var records = [];
 				tp.filter(program => program.vendorName == elem.name).forEach(program => 
-					records.push({"name": program.name, "link": "/" + elem.code + "/" + program.code})
+					records.push({"name": program.name, "link": "catalog/" + elem.code + "/" + program.code})
 					)
 	   			result.push({name: elem.name, records: records})
 			})
+		}
+		return result;
+	}
+	// использовать с обязательной привязкой в используемы класс isLoadTrainingPrograms
+	@action getNameTrainingProgramByName(codeTrainingProgram)
+	{
+		var result = "";
+		if (this.isLoadTrainingPrograms)
+		{	
+			var program = this.trainingPrograms.filter(program => program.code == codeTrainingProgram)[0];
+			if (program)
+			{
+				return program.name;	
+			}		
+		}
+		return result;
+	}
+	
+	// использовать с обязательной привязкой в используемы класс isLoadTrainingPrograms
+	@action getTrainingProgramParentVendor(codeTrainingProgram)
+	{
+		var result = [];
+		if (this.isLoadTrainingPrograms)
+		{	
+			var programCurrent = this.trainingPrograms.filter(program => program.code == codeTrainingProgram)[0];
+			var vendor = this.getVendorByTrainingProgram(codeTrainingProgram);
+			if (programCurrent)
+			{
+				this.trainingPrograms.filter(program => program.vendorID == programCurrent.vendorID)
+					.forEach(program => 
+						result.push({"name" : program.name, "link" : "/catalog/" + vendor.code + "/" + program.code})
+					) 
+				return result;	
+			}		
+		}
+		return result;
+	}
+	
+	// использовать с обязательной привязкой в используемы класс isLoadTrainingPrograms
+	@action getVendorByTrainingProgram(codeTrainingProgram)
+	{
+		var result = {};
+		if (this.isLoadTrainingPrograms)
+		{	
+			var program = this.trainingPrograms.filter(program => program.code == codeTrainingProgram)[0];
+			if (program)
+			{
+				return {"name": program.vendorName, "code": program.vendorCode};	
+			}		
 		}
 		return result;
 	}

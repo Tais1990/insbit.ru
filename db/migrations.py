@@ -70,13 +70,13 @@ def migration1(args: Any = None) -> None:
     manager.trainingProgramAdd('Red-Hat-Linux', 'Red Hat Linux', 17);
     manager.trainingProgramAdd('FreeBSD', 'FreeBSD', 17);    
 
-    manager.trainingProgramAdd('For-administrators', 'Для администраторов', 18);
-    manager.trainingProgramAdd('For-application-developers', 'Для разработчиков приложений', 18);
+    manager.trainingProgramAdd('Postgres-For-administrators', 'Для администраторов', 18);
+    manager.trainingProgramAdd('Postgres-For-application-developers', 'Для разработчиков приложений', 18);
 
-    manager.trainingProgramAdd('For-administrators', 'Для администраторов', 19);
-    manager.trainingProgramAdd('For-application-developers', 'Для разработчиков приложений', 19);
-    manager.trainingProgramAdd('Information-Security', 'Информационная безопасность', 19);
-    manager.trainingProgramAdd('For-analysts', 'Для аналитиков', 19);
+    manager.trainingProgramAdd('Oracle-For-administrators', 'Для администраторов', 19);
+    manager.trainingProgramAdd('Oracle-For-application-developers', 'Для разработчиков приложений', 19);
+    manager.trainingProgramAdd('Oracle-Information-Security', 'Информационная безопасность', 19);
+    manager.trainingProgramAdd('Oracle-For-analysts', 'Для аналитиков', 19);
 
     manager.trainingProgramAdd('Python', 'Python', 20);
     manager.trainingProgramAdd('WEB-programming', 'WEB-программирование', 20);

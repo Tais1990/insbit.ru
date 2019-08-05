@@ -60,6 +60,14 @@ class SiteHandler:
     async def catalog(self, request: web.Request) -> Dict[str, str]:
         return {}
 
+    # страница направления
+    @aiohttp_jinja2.template('trainingProgram.html')
+    async def trainingProgram(self, request: web.Request) -> Dict[str, str]:
+       return {
+            'nameTrainingProgram': request.match_info['trainingProgramCode'],
+            'vendorCode': request.match_info['vendorCode']}
+
+
     async def getAll(self, request: web.Request) -> Dict[str, str]:        
         res = manager.coursesSelectAll()
         return web.json_response(res, headers=headersClientPermission)
@@ -157,16 +165,22 @@ class SiteHandler:
     async def getTrainingProgramsAll(self, request: web.Request) -> Dict[str, str]:        
         res = manager.trainingProgramSelectAll()
         return web.json_response(res, headers=headersClientPermission)
+    
+    async def getCoursesByTrainingProgram(self, request: web.Request) -> Dict[str, str]:       
+        res = manager.coursesByTrainingProgram(request.match_info['codeTrainingProgram'])
+        return web.json_response(res, headers=headersClientPermission)
+
+
 # создания сообщения обратной связи
     async def createOutbox(self, request: web.Request) -> web.Response:
         headers = {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'http://localhost:8081'
         }
-        #try:
-        form = await request.json()
-        manager.outboxAdd(form.get('name'), form.get('email'), form.get('phone'), form.get('message'))            
-        return web.Response(status=200, headers=headers)
-        #except Exception:
-        #    print('Неопознанная ошибка')
-        #    return web.Response(status=500, headers=headers) 
+        try:
+            form = await request.json()
+            manager.outboxAdd(form.get('name'), form.get('email'), form.get('phone'), form.get('message'))            
+            return web.Response(status=200, headers=headers)
+        except Exception:
+            print('Неопознанная ошибка')
+            return web.Response(status=500, headers=headers) 

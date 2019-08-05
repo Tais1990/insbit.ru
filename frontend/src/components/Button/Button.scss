@@ -22,6 +22,14 @@ $mail-color: #4165b3;
 		}
     }
     &_color {
+        &_dark {
+            background-color: #3a5aa0;
+            border-color: #334f8d;
+            color: #fff;
+            &:hover {
+                background-color: #334f8d;
+            }
+        }
     	&_light {
     		&:hover {
 				color: #fff;

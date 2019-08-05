@@ -30,4 +30,8 @@ Button.propTypes = {
     type: PropTypes.oneOf(['link', 'button']),
     color: PropTypes.oneOf(['dark', 'light', 'red'])
 };
+Button.defaultProps = {
+  color: 'dark',
+  type: 'button'
+};
 export default Button;

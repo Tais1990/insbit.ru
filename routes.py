@@ -19,10 +19,13 @@ def init_routes(app: web.Application, handler: SiteHandler) -> None:
 
     #страницы каталога
     add_route('GET', '/catalog', handler.catalog, name='catalog')
+    # страница направления обучения
+    add_route('GET', '/catalog/{vendorCode}/{trainingProgramCode}', handler.trainingProgram, name='trainingProgram')
 
     #API
     add_route('GET', '/api/getAll', handler.getAll, name = 'getAll')
     add_route('GET', '/api/getCourse', handler.getCourse, name = 'getCourse')
+    
     # вспомогательный не очень нужный кусок
     add_route('OPTIONS', '/api/getCourse', handler.getCourseOPTIONS, name = 'getCourseOPTIONS')
 
@@ -32,6 +35,7 @@ def init_routes(app: web.Application, handler: SiteHandler) -> None:
 
     add_route('GET', '/api/getVendorsAll', handler.getVendorsAll, name = 'getVendorsAll')
     add_route('GET', '/api/getTrainingProgramsAll', handler.getTrainingProgramsAll, name = 'getTrainingProgramsAll')
+    add_route('GET', '/api/getCoursesByTrainingProgram/{codeTrainingProgram}', handler.getCoursesByTrainingProgram, name = 'getCoursesByTrainingProgram')
 
     # админка. как появятся сесии - ПЕРЕПИСАТЬ!!!!
     add_route('GET', '/admin/Yx5wvGduYsGrYwTKojFR/{nameTrainingPrograms}/course/{nameCourse}', handler.adminEditCourse, name='adminEditCourse')

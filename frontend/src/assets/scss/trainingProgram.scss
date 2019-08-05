@@ -1,0 +1,19 @@
+@import "_variables.scss";
+@import "_fonts.scss";
+.training-program {
+	&__container {
+	    display: -webkit-flex; /* Safari */
+	 	display: flex;
+	    -webkit-flex-direction: row;
+	 	flex-direction: row;
+	 	/*
+	 	@include tablet {
+        background-image: url($srcImgSmall);
+    }
+    @include mobile {
+       background-image: url($srcImgBig);
+    }
+	 	*/
+	 }
+}
+
