@@ -82,6 +82,19 @@ class Vendors {
 		}
 		return result;
 	}
+	@action getNameVendorByCode(code)
+	{
+		var result = "";
+		if (this.isLoadVendors)
+		{	
+			var vendor = this.vendors.filter(vendor => vendor.code == code)[0];
+			if (vendor)
+			{
+				return vendor.name;	
+			}		
+		}
+		return result;
+	}
 	
 	// использовать с обязательной привязкой в используемы класс isLoadTrainingPrograms
 	@action getTrainingProgramParentVendor(codeTrainingProgram)

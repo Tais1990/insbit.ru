@@ -9,13 +9,14 @@ import Footer from './components/Footer/Footer.jsx';
 import SectionBlock from './components/SectionBlock/SectionBlock.jsx';
 import Catalog from './components/Catalog/Catalog.jsx';
 import Button from './components/Button/Button.jsx';
+import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs.jsx';
 
 const urlPageBig = PARH_RESOURCE + 'img/laptop-with-webex_md2x.jpg';
 
 ReactDOM.render(
 	<div>
 		<Header/>
-		
+		<Breadcrumbs/>
 		<SectionBlock color='grey'>	
 			<div className = "catalog-header" /*style = {{backgroundImage: `url(${urlPageBig})`}}*/>
 				<div className = "catalog-header__faded">

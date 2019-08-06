@@ -15,7 +15,9 @@ class CoursesByTrainingProgram extends React.Component {
     render(props, state) {
         let {codeTrainingProgram} = this.props;
         const nameProgram = VendorsStore.getNameTrainingProgramByName(this.props.codeTrainingProgram);
+        const codeVendor = VendorsStore.getVendorByTrainingProgram(this.props.codeTrainingProgram).code;
         const isLoad = VendorsStore.isLoadTrainingPrograms;
+        const linkBase = "/catalog/" + codeVendor + "/" + codeTrainingProgram + "/";
         return <div className = 'courses-by-training-program'>  
             <div className = 'courses-by-training-program__name'>{nameProgram}</div>
             <div className = 'courses-by-training-program__header-courses'>Список курсов</div>
@@ -27,7 +29,8 @@ class CoursesByTrainingProgram extends React.Component {
                         name = {elem.name} 
                         cost = {elem.cost} 
                         date = {elem.date}
-                        description = {elem.description} />
+                        description = {elem.description}
+                        link =  {`${linkBase}${elem.code}`} />
                 )}
             </div>
             

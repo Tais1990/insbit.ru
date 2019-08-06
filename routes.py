@@ -14,13 +14,18 @@ def init_routes(app: web.Application, handler: SiteHandler) -> None:
     add_route('GET', '/about', handler.about, name='about')
     add_route('GET', '/about-us/{type}', handler.aboutUs, name='aboutUs')
 
-    add_route('GET', '/{nameTrainingPrograms}/course/{nameCourse}', handler.aboutCourse, name='aboutCourse')
+    
     add_route('GET', '/courseAll', handler.courseAll, name='courseAll')
 
+
     #страницы каталога
-    add_route('GET', '/catalog', handler.catalog, name='catalog')
+    add_route('GET', '/catalog', handler.catalog, name='catalog')    
+    #страница вендора
+    add_route('GET', '/catalog/{vendorCode}', handler.vendor, name='vendor')
     # страница направления обучения
     add_route('GET', '/catalog/{vendorCode}/{trainingProgramCode}', handler.trainingProgram, name='trainingProgram')
+    #страница курса
+    add_route('GET', '/catalog/{vendorCode}/{nameTrainingPrograms}/{nameCourse}', handler.aboutCourse, name='aboutCourse')
 
     #API
     add_route('GET', '/api/getAll', handler.getAll, name = 'getAll')

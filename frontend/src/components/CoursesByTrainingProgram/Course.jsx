@@ -8,15 +8,15 @@ class Course extends React.Component {
         super();
     }
     render(props, state) {        
-        let {code, name, cost, date, description} = this.props;
+        let {code, name, cost, date, description, link} = this.props;
         return <div className = 'course'>
-                <div className = 'course__name'><a href = {code} > {name}</a></div>
+                <div className = 'course__name'><a href = {link} > {name}</a></div>
                 <div className = 'course__cost'>{cost}</div>
                 <div className = 'course__description'>{description}</div>
                 <div className = 'course__date'> <strong>Next Live Class:</strong> {date}</div>
                 <div className = 'course__button'>
-                    <Button title = 'View Details & More Dates' type = 'button' link = '/courseAll'/>
-                    <Button title = 'Request Proposal' type = 'button' link = '/about-us/contact'/> 
+                    <Button title = 'View Details & More Dates' type = 'button' link = {link}/>
+                    <Button title = 'Свяжатесь с нами' type = 'button' link = '/about-us/contact'/> 
                 </div>
             </div>
     }
@@ -26,6 +26,7 @@ Course.propTypes = {
     name: PropTypes.string,    
     cost: PropTypes.string,    
     date: PropTypes.string,
-    description: PropTypes.string
+    description: PropTypes.string,
+    link: PropTypes.string
 };
 export default Course;

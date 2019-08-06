@@ -1,5 +1,4 @@
 import './assets/scss/main.scss'
-import './assets/scss/trainingProgram.scss'
 import React from 'react'
 import ReactDOM from "react-dom";
 
@@ -10,17 +9,15 @@ import VerticalNavigationalBar from './components/VerticalNavigationalBar/Vertic
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs.jsx';
 
 
-if (document.getElementById("nameTrainingProgram").value != null && document.getElementById("nameTrainingProgram").value != '' && 
-	document.getElementById("vendorCode").value != null && document.getElementById("vendorCode").value != '')
+if (document.getElementById("vendorCode").value != null && document.getElementById("vendorCode").value != '')
 {
 	//TO-DO Обработать несуществующий код
 	ReactDOM.render(
 		<div>       
 			<Header/>
 			<Breadcrumbs/>
-			<div className = 'training-program__container'>
-				<VerticalNavigationalBar type = 'trainingPrograms' code = {document.getElementById("nameTrainingProgram").value}/>		
-				<CoursesByTrainingProgram codeTrainingProgram = {document.getElementById("nameTrainingProgram").value}/>				
+			<div>
+				Тут будет находится страница вендора 	{document.getElementById("vendorCode").value}		
 			</div>
 			<Footer/>
 		</div>,

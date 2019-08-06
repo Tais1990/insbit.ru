@@ -11,6 +11,7 @@ import TeachingMethodsBlock from './components/TeachingMethodsBlock/TeachingMeth
 import AboutCourse from './components/AboutCourse/AboutCourse.jsx';
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
+import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs.jsx';
 
 
 var urlServer = MODE_NAME == "development" ? 'http://localhost:8080' : '';
@@ -39,6 +40,7 @@ fetch(`${urlServer}/api/getCourse?code=${document.getElementById("nameCourse").v
 			ReactDOM.render(
 				<div>
 					<Header/>
+					<Breadcrumbs/>
 					<SectionBlock>
 						<div className = 'course-wrapper'>
 							<AboutCourse courseData = {data}/>	

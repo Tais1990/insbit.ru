@@ -66,6 +66,11 @@ class SiteHandler:
        return {
             'nameTrainingProgram': request.match_info['trainingProgramCode'],
             'vendorCode': request.match_info['vendorCode']}
+    # страница вендера
+    @aiohttp_jinja2.template('vendor.html')
+    async def vendor(self, request: web.Request) -> Dict[str, str]:
+       return {
+            'vendorCode': request.match_info['vendorCode']}
 
 
     async def getAll(self, request: web.Request) -> Dict[str, str]:        
