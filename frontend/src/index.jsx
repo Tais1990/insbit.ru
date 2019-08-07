@@ -6,7 +6,7 @@ import ReactDOM from "react-dom";
 import TitleBlock from "./components/TitleBlock/TitleBlock.jsx";
 import TextBlock from './components/TextBlock/TextBlock.jsx';
 import SectionBlock from './components/SectionBlock/SectionBlock.jsx';
-import TeachingMethodsBlock from './components/TeachingMethodsBlock/TeachingMethodsBlock.jsx';
+import NewsBlock from './components/NewsBlock/NewsBlock.jsx';
 import TrainingPrograms from './components/TrainingPrograms/TrainingPrograms.jsx';
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
@@ -17,7 +17,7 @@ ReactDOM.render(
         <Header/>        
 		<SectionBlock title = 'Обучение для IT-специалистов' color='grey'>
         	<TextBlock>Уральская Школа IT приглашает на обучение IT специалистов и пользователей. Мы предлагаем обучение по-различным продуктам и системам для новичков и профессионалов.</TextBlock>
-        	<TeachingMethodsBlock/>
+        	<NewsBlock/>
         </SectionBlock>
         {/*
         <SectionBlock title = 'Направления подготовки'>
