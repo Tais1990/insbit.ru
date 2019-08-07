@@ -13,6 +13,7 @@ def init_routes(app: web.Application, handler: SiteHandler) -> None:
     add_route('GET', '/', handler.index, name='index')
     add_route('GET', '/about', handler.about, name='about')
     add_route('GET', '/about-us/{type}', handler.aboutUs, name='aboutUs')
+    add_route('GET', '/teachingMethods/{methodCode}', handler.teachingMethod, name='teachingMethod')
 
     
     add_route('GET', '/courseAll', handler.courseAll, name='courseAll')

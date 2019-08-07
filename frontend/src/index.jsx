@@ -19,12 +19,14 @@ ReactDOM.render(
         	<TextBlock>Уральская Школа IT приглашает на обучение IT специалистов и пользователей. Мы предлагаем обучение по-различным продуктам и системам для новичков и профессионалов.</TextBlock>
         	<TeachingMethodsBlock/>
         </SectionBlock>
+        {/*
         <SectionBlock title = 'Направления подготовки'>
         	<TrainingPrograms/>
             <div className = 'button_center'>
                 <Button title = 'КУРСЫ' type = 'button' color='light' link = '/courseAll'/> 
             </div>  
-        </SectionBlock>  
+        </SectionBlock> 
+        */}
 		{/*
         <TitleBlock text = {'текст для заголловка'}/>
        	<TextBlock><div>Текст статический для просто</div></TextBlock>

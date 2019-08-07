@@ -9,13 +9,13 @@ let infoArray = [
         records: [
             {
                 text: "Обучение в нашем классе",
-                link: "/"
+                link: "/teachingMethods/live-online"
             }, {
                 text: "Индивидуальные занятия",
-                link: "/"
+                link: "/teachingMethods/self-paced"
             }, {
                 text: "Корпоративные курсы",
-                link: "/"
+                link: "/teachingMethods/customized-onsite"
             }
         ]
     }, {
@@ -60,11 +60,11 @@ let infoArray = [
         records: [
             {
                 text: "Полный каталог курсов",
-                link: "/"
-            }, {
+                link: "/catalog"
+            }/*, {
                 text: "Акции и скидки",
                 link: "/"
-            }
+            }*/
         ]
     }
 ]

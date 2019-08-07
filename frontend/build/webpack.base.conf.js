@@ -24,6 +24,7 @@ module.exports = {
 		catalog: `${PATHS.src}/catalog.jsx`,
 		trainingProgram: `${PATHS.src}/trainingProgram.jsx`,
 		vendor: `${PATHS.src}/vendor.jsx`,
+		teachingMethod: `${PATHS.src}/teachingMethod.jsx`,
 	},
 	output: {		
 		filename: `${PATHS.assets}js/[name].[hash].js`,
@@ -136,6 +137,12 @@ module.exports = {
 			filename: 'vendor.html',
 			inject: false,
 			chunks: ['vendor', 'vendors']
+		}),
+		new HtmlWebpackPlugin({
+			template: `${PATHS.src}/teachingMethod.html`,
+			filename: 'teachingMethod.html',
+			inject: false,
+			chunks: ['teachingMethod', 'vendors']
 		}),
 		// копирование файлов
 		new CopyWebpackPlugin([

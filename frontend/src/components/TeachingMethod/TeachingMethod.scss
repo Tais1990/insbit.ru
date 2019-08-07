@@ -1,0 +1,58 @@
+@import "../../assets/scss/_variables.scss";
+.teaching-method {
+	display: -webkit-flex; 
+ 	display: flex;
+    -webkit-flex-direction: row;
+ 	flex-direction: row; 	
+ 	flex-wrap: wrap;
+ 	justify-content: center;
+ 	margin: 0 auto;
+ 	margin-top: 50px; 
+ 	margin-bottom: 50px; 	
+ 	max-width: 1000px;
+ 	justify-content: space-between;
+	@include tablet {
+		max-width: 750px;
+		-webkit-flex-direction: column;
+ 		flex-direction: column;
+	}
+	@include mobile {
+		margin-right: auto;
+	    margin-left: auto;
+	    padding-left: 15px;
+	    padding-right: 15px;
+	}
+ 	&__info {
+ 		width: 45%;
+ 		@include tablet {
+			width: 100%	
+		}
+		@include mobile {
+			width: 100%	
+		}
+ 	} 
+ 	&__title {
+ 		color: #141414;
+ 		font-weight: 300;
+ 		font-size: 40px;
+    	line-height: 50px;
+ 	}
+ 	&__text {
+ 		margin-top: 20px;
+ 		margin-bottom: 20px;
+ 		color: #2c3e50;
+ 		font-weight: 300;
+ 		font-size: 18px;
+    	line-height: 28px;
+ 	}
+ 	&__photo {
+		width: 500px;
+    	height: 350px;
+    	background-size: cover;
+    	border-radius: 10px;
+    	@include mobile {
+			width: 300px;
+    		height: 250px;
+		}
+ 	}
+}

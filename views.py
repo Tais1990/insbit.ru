@@ -73,6 +73,13 @@ class SiteHandler:
             'vendorCode': request.match_info['vendorCode']}
 
 
+    # страница форм обучения
+    @aiohttp_jinja2.template('teachingMethod.html')
+    async def teachingMethod(self, request: web.Request) -> Dict[str, str]:
+       return {
+            'methodCode': request.match_info['methodCode']}
+
+            
     async def getAll(self, request: web.Request) -> Dict[str, str]:        
         res = manager.coursesSelectAll()
         return web.json_response(res, headers=headersClientPermission)
