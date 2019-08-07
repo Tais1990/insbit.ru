@@ -12,8 +12,12 @@ def init_routes(app: web.Application, handler: SiteHandler) -> None:
 
     add_route('GET', '/', handler.index, name='index')
     add_route('GET', '/about', handler.about, name='about')
+    # Информация
     add_route('GET', '/about-us/{type}', handler.aboutUs, name='aboutUs')
+    # формы обучения
     add_route('GET', '/teachingMethods/{methodCode}', handler.teachingMethod, name='teachingMethod')
+    #  новости
+    add_route('GET', '/news/{newsCode}', handler.news, name='news')
 
     
     add_route('GET', '/courseAll', handler.courseAll, name='courseAll')

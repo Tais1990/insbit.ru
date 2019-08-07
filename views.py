@@ -79,6 +79,12 @@ class SiteHandler:
        return {
             'methodCode': request.match_info['methodCode']}
 
+    # страница новости
+    @aiohttp_jinja2.template('news.html')
+    async def news(self, request: web.Request) -> Dict[str, str]:
+       return {
+            'newsCode': request.match_info['newsCode']}
+
             
     async def getAll(self, request: web.Request) -> Dict[str, str]:        
         res = manager.coursesSelectAll()
