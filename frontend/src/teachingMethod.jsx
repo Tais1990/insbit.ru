@@ -6,6 +6,7 @@ import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import TeachingMethod from './components/TeachingMethod/TeachingMethod.jsx';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs.jsx';
+import HorizontalNavigationalBar from './components/HorizontalNavigationalBar/HorizontalNavigationalBar.jsx';
 
 
 if (document.getElementById("methodCode").value != null && document.getElementById("methodCode").value != '')
@@ -14,6 +15,7 @@ if (document.getElementById("methodCode").value != null && document.getElementBy
 	ReactDOM.render(
 		<div>       
 			<Header/>
+			<HorizontalNavigationalBar/> 
 			<Breadcrumbs/>
 			<TeachingMethod type = {document.getElementById("methodCode").value}/>				
 			<Footer/>

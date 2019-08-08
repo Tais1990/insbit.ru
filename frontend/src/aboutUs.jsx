@@ -6,6 +6,7 @@ import AboutUs from "./components/AboutUs/AboutUs.jsx";
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs.jsx';
+import HorizontalNavigationalBar from './components/HorizontalNavigationalBar/HorizontalNavigationalBar.jsx';
 
 ReactDOM.render(
 	<div>       
@@ -18,6 +19,7 @@ if (document.getElementById("type") != null && document.getElementById("type").v
 	ReactDOM.render(
 		<div>
 			<Header/>
+			<HorizontalNavigationalBar/> 
 			<Breadcrumbs/>
 			<AboutUs type={document.getElementById("type").value}/>
 			<Footer/>

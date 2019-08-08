@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer.jsx';
 import CoursesByTrainingProgram from './components/CoursesByTrainingProgram/CoursesByTrainingProgram.jsx';
 import VerticalNavigationalBar from './components/VerticalNavigationalBar/VerticalNavigationalBar.jsx';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs.jsx';
+import HorizontalNavigationalBar from './components/HorizontalNavigationalBar/HorizontalNavigationalBar.jsx';
 
 
 if (document.getElementById("nameTrainingProgram").value != null && document.getElementById("nameTrainingProgram").value != '' && 
@@ -17,6 +18,7 @@ if (document.getElementById("nameTrainingProgram").value != null && document.get
 	ReactDOM.render(
 		<div>       
 			<Header/>
+			<HorizontalNavigationalBar/> 
 			<Breadcrumbs/>
 			<div className = 'training-program__container'>
 				<VerticalNavigationalBar type = 'trainingPrograms' code = {document.getElementById("nameTrainingProgram").value}/>		

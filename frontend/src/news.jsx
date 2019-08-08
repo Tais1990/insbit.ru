@@ -6,6 +6,7 @@ import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import News from './components/News/News.jsx';
 //import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs.jsx';
+import HorizontalNavigationalBar from './components/HorizontalNavigationalBar/HorizontalNavigationalBar.jsx';
 
 
 if (document.getElementById("newsCode").value != null && document.getElementById("newsCode").value != '')
@@ -14,6 +15,7 @@ if (document.getElementById("newsCode").value != null && document.getElementById
 	ReactDOM.render(
 		<div>       
 			<Header/>
+			<HorizontalNavigationalBar/> 
 			{/*<Breadcrumbs/>*/}
 			<News type = {document.getElementById("newsCode").value}/>			
 			<Footer/>

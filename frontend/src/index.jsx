@@ -11,10 +11,12 @@ import TrainingPrograms from './components/TrainingPrograms/TrainingPrograms.jsx
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import Button from './components/Button/Button.jsx';
+import HorizontalNavigationalBar from './components/HorizontalNavigationalBar/HorizontalNavigationalBar.jsx';
 
 ReactDOM.render(
 	<div>       
-        <Header/>        
+        <Header/>  
+        <HorizontalNavigationalBar/>      
 		<SectionBlock title = 'Обучение для IT-специалистов' color='grey'>
         	<TextBlock>Уральская Школа IT приглашает на обучение IT специалистов и пользователей. Мы предлагаем обучение по-различным продуктам и системам для новичков и профессионалов.</TextBlock>
         	<NewsBlock/>
