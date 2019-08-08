@@ -121,7 +121,7 @@ def coursesSelectAll():
                 'duration' : record.duration,
                 'knowledgeRequired' : record.knowledgeRequired,
                 'result' : record.result,
-                'htmlContent' : record.htmlContent,
+                'jsonContent' : record.jsonContent,
                 'cost' : record.cost,
                 'date' : record.date
             })
@@ -147,7 +147,7 @@ def coursesSelect(code):
                 'duration' : record.duration,
                 'knowledgeRequired' : record.knowledgeRequired,
                 'result' : record.result,
-                'htmlContent' : record.htmlContent,
+                'jsonContent' : record.jsonContent,
                 'cost' : record.cost,
                 'date' : record.date,
                 'vendorID' : record.vendor.id,
@@ -167,7 +167,7 @@ def cutOff(str):
         str = str[:50000]
     return str
 #добавление записи
-def coursesAdd(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, htmlContent, cost, date, vendor, trainingProgram):
+def coursesAdd(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, jsonContent, cost, date, vendor, trainingProgram):
     row = Courses(
         name = cutOff(name),
         code = code.lower().strip(),
@@ -177,7 +177,7 @@ def coursesAdd(code, name, description, numberCode, forWhom, duration, knowledge
         duration = cutOff(duration),
         knowledgeRequired = cutOff(knowledgeRequired),
         result = cutOff(result),
-        htmlContent = cutOff(htmlContent),
+        jsonContent = cutOff(jsonContent),
         cost = cutOff(cost),
         date = cutOff(date),
         vendor = vendor,
@@ -187,7 +187,7 @@ def coursesAdd(code, name, description, numberCode, forWhom, duration, knowledge
 
 #изменение записи
 #возможно стоит держать разностные изменения
-def coursesEdit(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, htmlContent, cost, date, vendor, trainingProgram):
+def coursesEdit(code, name, description, numberCode, forWhom, duration, knowledgeRequired, result, jsonContent, cost, date, vendor, trainingProgram):
     course = Courses.select().where(Courses.code == code.strip()).get()
     course.name = cutOff(name);
     course.description = cutOff(description);
@@ -196,7 +196,7 @@ def coursesEdit(code, name, description, numberCode, forWhom, duration, knowledg
     course.duration = cutOff(duration);
     course.knowledgeRequired = cutOff(knowledgeRequired);
     course.result = cutOff(result);
-    course.htmlContent = cutOff(htmlContent);
+    course.jsonContent = cutOff(jsonContent);
     course.cost = cutOff(cost);
     course.date = cutOff(date);
     course.vendor = vendor;

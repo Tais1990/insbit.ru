@@ -1,8 +1,10 @@
 from peewee import *
 import datetime
+import json
 from db.dbhandle import *
 from peewee import TextField
 from playhouse.postgres_ext import ArrayField
+from playhouse.postgres_ext import JSONField
  
 class BaseModel(Model):
     class Meta:
@@ -37,7 +39,7 @@ class Courses(BaseModel):
     duration = CharField(max_length=50000)
     knowledgeRequired = ArrayField(TextField, default=[])
     result = ArrayField(TextField, default=[])
-    htmlContent = TextField()
+    jsonContent = JSONField()
     cost = CharField(max_length=50000, default='')
     date = CharField(max_length=50000, default='')
     vendor = ForeignKeyField(Vendors)

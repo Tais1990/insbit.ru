@@ -139,13 +139,13 @@ class SiteHandler:
                 manager.coursesEdit(form.get('code'), form.get('name'), 
                     form.get('description'), form.get('numberCode'), 
                     form.get('forWhom'), form.get('duration'),
-                    form.get('knowledgeRequired'), form.get('result'), form.get('htmlContent'),
+                    form.get('knowledgeRequired'), form.get('result'), form.get('jsonContent'),
                     form.get('cost'), form.get('date'), form.get('vendor'), form.get('trainingProgram'))
             else:
                 manager.coursesAdd(form.get('code'), form.get('name'), 
                     form.get('description'), form.get('numberCode'), 
                     form.get('forWhom'), form.get('duration'),
-                    form.get('knowledgeRequired'), form.get('result'), form.get('htmlContent'),
+                    form.get('knowledgeRequired'), form.get('result'), form.get('jsonContent'),
                     form.get('cost'), form.get('date'), form.get('vendor'), form.get('trainingProgram'))
             headers = {
                 'Content-Type': 'application/json',

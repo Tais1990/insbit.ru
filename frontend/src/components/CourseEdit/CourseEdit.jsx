@@ -26,7 +26,7 @@ class CourseEdit extends React.Component {
             forWhom : props.courseData.forWhom,
             knowledgeRequired : this.arrayToString(props.courseData.knowledgeRequired),
             result : this.arrayToString(this.props.courseData.result),
-            htmlContent : props.courseData.htmlContent,
+            jsonContent : props.courseData.jsonContent,
             cost: props.courseData.cost,
             date: props.courseData.date,
             vendor: props.courseData.vendorID,
@@ -42,7 +42,8 @@ class CourseEdit extends React.Component {
             forWhom : '',
             knowledgeRequired : '',
             result : '',
-            htmlContent : '<ol>\n' 
+            /*
+            jsonContent : '<ol>\n' 
             + ' <li> Модуль 1 \n'
             + '     <ol>\n'
             + '         <li>Первый урок</li>\n'
@@ -51,6 +52,8 @@ class CourseEdit extends React.Component {
             + ' </li>\n'
             + ' <li> Модуль 2 </li>\n'
             +'</ol>',
+            */
+            jsonContent: '[{"name": "Навзание блока", recordes: ["321", "321"], "labwork" : ["лаб1", "лаб2"]}]',
             cost:  '',
             date: '',
             vendor: 0,
@@ -83,7 +86,7 @@ class CourseEdit extends React.Component {
                 forWhom : this.state.forWhom,
                 knowledgeRequired : this.stringToArray(this.state.knowledgeRequired),
                 result : this.stringToArray(this.state.result),
-                htmlContent : this.state.htmlContent,
+                jsonContent : this.state.jsonContent,
                 type: this.state.type,
                 cost: this.state.cost,
                 date: this.state.date,
@@ -144,7 +147,7 @@ class CourseEdit extends React.Component {
                 <label> Результат обучения:</label> <textarea name="result" value={this.state.result} onChange={this.handleChange} />
             </div>
             <div className = 'course-edit__field'>
-                <label> Содержание курса:</label> <textarea name="htmlContent" value={this.state.htmlContent} onChange={this.handleChange} />
+                <label> Содержание курса:</label> <textarea name="jsonContent" value={this.state.jsonContent} onChange={this.handleChange} />
             </div>
             <div className = 'course-edit__field'>
                 <label> Вендор:</label>
