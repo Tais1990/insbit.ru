@@ -1,43 +1,78 @@
 @import "../../assets/scss/_variables.scss";
 .list {
-
-	&__header {
-		margin-top: 12px;
-		background-color: #383838;
-		padding: 12px 24px;
-		color: #fff;
-		font-size: 15px;
-		line-height: 1;
-		text-transform: uppercase;
-    	font-weight: 700;
-    	cursor: pointer;
-    	text-align: left;
-    	&:hover {
-			background-color: #4165b3;
-		}
-		&__invers {
-			background-color: #4165b3;
-			&:hover {
+	&_type {
+		&_catalog {
+			&__header {
+				margin-top: 12px;
 				background-color: #383838;
+				padding: 12px 24px;
+				color: #fff;
+				font-size: 15px;
+				line-height: 1;
+				text-transform: uppercase;
+		    	font-weight: 700;
+		    	cursor: pointer;
+		    	text-align: left;
+		    	&:hover {
+					background-color: #4165b3;
+				}
+				&__invers {
+					background-color: #4165b3;
+					&:hover {
+						background-color: #383838;
+					}
+				}
+			}
+			&__record {
+				color: #555;
+				padding: 10px 15px;
+			    margin-bottom: -1px;
+			    background-color: #fff;
+			    border: 1px solid #ddd;
+			    text-decoration: none;
+			    text-align: left;
+			    &:hover {
+					background-color: #f2f2f2;
+				}
 			}
 		}
+		&_course {
+			&__header {
+				cursor: pointer;
+				color: #3a5aa0;
+    			font-weight: 600;
+			}
+			&__record {
+				cursor: pointer;
+			    color: #555;
+			    font-weight: 400;
+			    padding: 0;
+			    margin: 6px 0;
+			}
+			ol {
+				list-style-type: upper-alpha;
+			}
+			li {
+				display: list-item;
+			}
+			.caret {
+			    margin-left: 5px;
+			    &__concealed {
+					display: none;
+				}
+			}
+
+		}
+
 	}
-	&__record {
-		color: #555;
-		padding: 10px 15px;
-	    margin-bottom: -1px;
-	    background-color: #fff;
-	    border: 1px solid #ddd;
-	    text-decoration: none;
-	    text-align: left;
+	
+	&__record {		
 	    display: -webkit-flex;
 		display: flex;
 		-webkit-flex-direction: row;
 		flex-direction: row;
 		justify-content: space-between;
-		&:hover {
-			background-color: #f2f2f2;
-		}
+		
 	}
 	&__body {
 		display: -webkit-flex;

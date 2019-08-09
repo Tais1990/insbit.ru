@@ -16,18 +16,36 @@ class List extends React.Component {
         this.setState({isOpen: !this.state.isOpen})
     }
     render() {
-        let {data} = this.props; 
-        return <div className = 'list'>
-            <div className = {`list list__header list__header${this.state.isOpen ? '__invers' : ''}`} onClick={this.changeState}>{data.name}</div>
-            <div className = {`list list__body${this.state.isOpen ? '' : '__concealed'}`}>
-                {data.records.map(record =>
-                    <a href={record.link} className = 'list list__record' key = {record.name}>
-                        <div>{record.name}</div> 
-                        <Icon code = {String.fromCharCode(parseInt("f054", 16))} font = "faFree"  className = "list__record" />
-                    </a>
-                )}
+        let {data, type} = this.props;         
+        if (type === 'catalog')
+        {
+            return <div className = 'list list_type_catalog'>
+                <div className = {`list list_type_catalog__header list__header${this.state.isOpen ? '__invers' : ''}`} onClick={this.changeState}>{data.name}</div>
+                <div className = {`list list__body${this.state.isOpen ? '' : '__concealed'}`}>
+                    {data.records.map(record =>
+                        <a href={record.link} className = 'list list__record list_type_catalog__record ' key = {record.name}>
+                            <div>{record.name}</div> 
+                            <Icon code = {String.fromCharCode(parseInt("f054", 16))} font = "faFree"  className = "list__record" />
+                        </a>
+                    )}
+                </div>
             </div>
-        </div>
+        }
+        if (type === 'course')
+        {
+            return <div className = 'list list_type_course'>
+                <div className = {`list list_type_course__header `} onClick={this.changeState}>{data.name} 
+                        <span className = {`caret caret${this.state.isOpen ? '__concealed' : ''}`}/>
+                </div>
+                <div className = {`list list__body${this.state.isOpen ? '' : '__concealed'}`}>
+                    <ol>
+                    {data.records.map(record =>
+                        <li key = {record.name} className = 'list list__record list_type_course__record' >{record.name}</li>
+                    )}
+                    </ol>
+                </div>
+            </div>
+        }
     }
 }
 
@@ -44,6 +62,9 @@ List.propTypes = {
             ))
         }
     ),
-    //type: PropTypes.oneOf(['catalog'])
+    type: PropTypes.oneOf(['catalog', 'course'])
+};
+List.defaultProps = {
+    type: 'catalog'
 };
 export default List;

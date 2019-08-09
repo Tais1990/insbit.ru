@@ -26,7 +26,7 @@ class CourseEdit extends React.Component {
             forWhom : props.courseData.forWhom,
             knowledgeRequired : this.arrayToString(props.courseData.knowledgeRequired),
             result : this.arrayToString(this.props.courseData.result),
-            jsonContent : props.courseData.jsonContent,
+            jsonContent : JSON.stringify(props.courseData.jsonContent),
             cost: props.courseData.cost,
             date: props.courseData.date,
             vendor: props.courseData.vendorID,
@@ -53,7 +53,13 @@ class CourseEdit extends React.Component {
             + ' <li> Модуль 2 </li>\n'
             +'</ol>',
             */
-            jsonContent: '[{"name": "Навзание блока", recordes: ["321", "321"], "labwork" : ["лаб1", "лаб2"]}]',
+            jsonContent: '[\n'
+            + ' {\n'
+            + '     "name": "Навзание блока", \n'
+            + '     "records": ["321", "123"], \n'
+            +'      "labwork" : ["лаб1", "лаб2"]\n'
+            +'  }\n'
+            +']',
             cost:  '',
             date: '',
             vendor: 0,
@@ -86,7 +92,7 @@ class CourseEdit extends React.Component {
                 forWhom : this.state.forWhom,
                 knowledgeRequired : this.stringToArray(this.state.knowledgeRequired),
                 result : this.stringToArray(this.state.result),
-                jsonContent : this.state.jsonContent,
+                jsonContent : JSON.parse(this.state.jsonContent),
                 type: this.state.type,
                 cost: this.state.cost,
                 date: this.state.date,

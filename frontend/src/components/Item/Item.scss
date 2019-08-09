@@ -9,4 +9,24 @@
 	&__data {
 
 	}
+	&_type {
+		&_multiList {			
+			> ol {
+				> li {
+					padding: 6px 10px 6px 10px;
+					cursor: pointer;
+					color: #3a5aa0;
+			    	font-weight: 600;
+		    	}
+    		}
+    		> ul {
+				> li {
+					padding: 6px 10px 6px 10px;
+					cursor: pointer;
+					color: #3a5aa0;
+			    	font-weight: 600;
+		    	}
+    		}
+		}
+	}
 }

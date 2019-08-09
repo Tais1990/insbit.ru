@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import styles from './Item.scss';
+import List from '../List/List.jsx';
 
 class Item extends React.Component {
     constructor() {
@@ -36,13 +37,22 @@ class Item extends React.Component {
                 <div className = 'item__data' dangerouslySetInnerHTML={{__html: data}} />
             </div>  
         }
+        if (type === 'multiList')
+        {
+            return  <div className = 'item_type_multiList' >
+            { title && <div className = 'item__title'> {title} </div>}
+            <ol>
+                { data.map(mode => <li key = {mode.name} ><List data = {mode} type = 'course'/></li>) }
+            </ol>
+            </div>
+        }
 
     }
 }
 Item.propTypes = {
     title: PropTypes.string,    
     data: PropTypes.any,
-    type: PropTypes.oneOf(['paragraph', 'list', 'html']),
+    type: PropTypes.oneOf(['paragraph', 'list', 'html', 'multiList']),
     beforeData: PropTypes.string
 };
 Item.defaultProps = {
