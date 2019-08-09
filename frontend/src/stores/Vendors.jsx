@@ -108,7 +108,7 @@ class Vendors {
 			{
 				this.trainingPrograms.filter(program => program.vendorID == programCurrent.vendorID)
 					.forEach(program => 
-						result.push({"name" : program.name, "link" : "/catalog/" + vendor.code + "/" + program.code})
+						result.push({"name" : program.name, "link" : "/" + program.code})
 					) 
 				return result;	
 			}		

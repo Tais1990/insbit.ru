@@ -13,6 +13,7 @@ import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs.jsx';
 import HorizontalNavigationalBar from './components/HorizontalNavigationalBar/HorizontalNavigationalBar.jsx';
+import VerticalNavigationalBar from './components/VerticalNavigationalBar/VerticalNavigationalBar.jsx';
 
 
 var urlServer = MODE_NAME == "development" ? 'http://localhost:8080' : '';
@@ -42,12 +43,12 @@ fetch(`${urlServer}/api/getCourse?code=${document.getElementById("nameCourse").v
 				<div>
 					<Header/>
 					<HorizontalNavigationalBar/> 
-					<Breadcrumbs/>
-					<SectionBlock>
-						<div className = 'course-wrapper'>
+					<Breadcrumbs/>					
+						<div className = 'course__container'>
+							<VerticalNavigationalBar type = 'courses' code = {document.getElementById("nameCourse").value}/>
 							<AboutCourse courseData = {data}/>	
 						</div>		        	
-			        </SectionBlock>					
+			        					
 					<Footer/>
 				</div>,
 				document.getElementById("root")

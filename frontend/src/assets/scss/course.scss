@@ -1,16 +1,20 @@
 @import "_variables.scss";
 @import "_fonts.scss";
-.course-wrapper {
-	width: 970px;
-	margin: 0 auto;
-	/*потом тут будет настройка для флекса*/
-	@include tablet {
-		width: 740px;
-	}
-	@include mobile {
+
+.course {
+	&__container {
+		display: -webkit-flex; /* Safari */
+	 	display: flex;
+	    -webkit-flex-direction: row;
+	 	flex-direction: row;
+	 	margin: 0 auto;
+		max-width: 1170px;
 		width: 90%;
-	}
-	&_broad {
-		margin: 0 10px;
+		@include tablet {
+			width: 750px;
+		}
+		@include mobile {
+			width: 90%;
+		}	
 	}
 }

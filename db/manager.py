@@ -123,7 +123,9 @@ def coursesSelectAll():
                 'result' : record.result,
                 'jsonContent' : record.jsonContent,
                 'cost' : record.cost,
-                'date' : record.date
+                'date' : record.date,
+                'trainingProgramCode': record.trainingProgram.code,
+                'trainingProgramName': record.trainingProgram.name
             })
         return courses_data
     except peewee.InternalError as px:
