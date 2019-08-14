@@ -23,7 +23,7 @@ ReactDOM.render(
 			<div className = "catalog-header" /*style = {{backgroundImage: `url(${urlPageBig})`}}*/>
 				<div className = "catalog-header__faded">
 					<h1>Каталог курсов</h1>
-					<div className = 'catalog-header__text'>Webucator offers training for private groups and individual students.</div>
+					<div className = 'catalog-header__text'>Возможно обучение в составе групп или индивидуальные занятия.</div>
 					<div className = 'catalog-header__contacts'>
 						<Button title = 'НАШИ КОНТАКТЫ' type = 'button' color='red' link = '/about-us/contact'/>
 						<div className = 'catalog-header__phone'> или звоните +7 999 565 55 75</div>

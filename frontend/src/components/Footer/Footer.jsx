@@ -77,7 +77,7 @@ class Footer extends React.Component {
         return <footer className="footer">
             <Info data = {infoArray}/>
             <SocialIcons/>
-            <div className="footer__copyright">© 2004-2019 Webucator, Inc. All Rights Reserved.</div>
+            <div className="footer__copyright">© 2019, Институт Бизнеса и Информационных Технологий.</div>
         </footer>
     }
 }

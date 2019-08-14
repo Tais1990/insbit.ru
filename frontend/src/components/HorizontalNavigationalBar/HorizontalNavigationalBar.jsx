@@ -4,7 +4,7 @@ import styles from './HorizontalNavigationalBar.scss';
 import MenuRecord from './MenuRecord.jsx';
 var menu = [
     {
-        name: "Course Catalog",
+        name: "Каталог курсов",
         records: [
             {
                 text: "Каталог",
@@ -12,7 +12,7 @@ var menu = [
             }
         ]
     }, {
-        name: "Training Options",
+        name: "Обучение",
         records: [
             {
                 text: "Обучение в нашем классе",
