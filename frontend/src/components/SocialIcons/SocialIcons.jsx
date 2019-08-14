@@ -6,23 +6,23 @@ let icons = [
     {
         codeIcon: "f39e",
         fontIcon: "faBrands",
-        link: "http://www.facebook.com/webucator"
+        link: "https://insbit.ru"
     }, {
         codeIcon: "f0d5",
         fontIcon: "faBrands",
-        link: "https://plus.google.com/+Webucator"
+        link: "https://insbit.ru"
     }, {
         codeIcon: "f0e1",
         fontIcon: "faBrands",
-        link: "https://www.linkedin.com/companies/webucator"
+        link: "https://insbit.ru"
     }, {
         codeIcon: "f099",
         fontIcon: "faBrands",
-        link: "https://twitter.com/webucator"
+        link: "https://insbit.ru"
     }, {
         codeIcon: "f0e0",
         fontIcon: "faFree",
-        link: "mailto:sales@webucator.com"
+        link: "https://insbit.ru"
     }
 ]
 class SocialIcons extends React.Component {
