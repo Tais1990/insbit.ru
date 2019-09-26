@@ -7,7 +7,7 @@ class Button extends React.Component {
         super();
     }
     render(props, state) {
-        let {title, link, type, color} = this.props;
+        let {title, link, type, color, onClick} = this.props;
         let classes = `button`;
         if (type) {
             classes += ` button_type_${type}`;
@@ -16,19 +16,27 @@ class Button extends React.Component {
             classes += ` button_color_${color}`;
         }
         // TO-DO сделать через Link
-        return ( 
-            <a href = {link} className={classes}>
-                {title}
-            </a>
-        )
+        if (link) {
+            return ( 
+                <a href = {link} className={classes}>
+                    {title}
+                </a>
+            )
+        } else {
+            return (
+                <div className={classes} onClick = {onClick}> {title} </div>
+            )
+        }
     }
 }
 // пока сомый простой вариаент
 Button.propTypes = {
     title: PropTypes.string,    
     link: PropTypes.string,
+    // то, как выглядит, а не как себя ведёт
     type: PropTypes.oneOf(['link', 'button']),
-    color: PropTypes.oneOf(['dark', 'light', 'red'])
+    color: PropTypes.oneOf(['dark', 'light', 'red']),
+    onClick: PropTypes.func
 };
 Button.defaultProps = {
   color: 'dark',
